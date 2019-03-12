@@ -5,5 +5,6 @@ describe("canary test", function() {
   // This can help us ensure our testing suite is set up correctly before writing real tests
   it("should pass this canary test", function() {
     expect(true).to.be.true;
+    expect(equal(add(1,2), 3)).to.be.true;
   });
 });
