@@ -14,6 +14,29 @@ body {font-size:16px;}
 .w3-sidebar{
     background-color:  #de6fa1;
 }
+
+/* featured */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.featured{
+    width: 100px;
+    height: 100px;
+}
+.yellow{
+justify-content: center;
+margin: 20px 0px 0px 97px;
+
+}
 </style>
 <body>
 
@@ -52,28 +75,25 @@ body {font-size:16px;}
   </div>
 
   <!-- video -->
+
+  <!-- featured -->
   <div class="container" style="height:300px;background-color:rgb(255, 160, 160);font-size:36px">
-      <h1>Featured Treats</h1>
-  </div>
-
-
-  
-  
-
-<script>
-// Script to open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-
-
-</script>
-
-</body>
-</html>
+        <h1>Featured treats</h1>
+    <div class="w3-quarter yellow">
+           
+        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Popsicle" style="width:100%">
+        <h3>All I Need Is a Popsicle</h3>
+        
+      </div>
+      <div class="w3-quarter">
+        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Salmon" style="width:100%">
+        <h3>Salmon For Your Skin</h3>
+        
+      </div>
+      <div class="w3-quarter">
+        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Sandwich" style="width:100%">
+        <h3>The Perfect Sandwich, A Real Classic</h3>
+        
+      </div>
+      
+      </div>
