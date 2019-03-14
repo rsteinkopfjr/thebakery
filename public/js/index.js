@@ -1,5 +1,6 @@
 // Get references to page elements
 var $exampleText = $("#example-text");
+var $exampleCategory = $("#example-category");
 var $exampleDescription = $("#example-description");
 var $examplePrice = $("#example-price");
 var $submitBtn = $("#submit");
@@ -35,20 +36,25 @@ var API = {
 var refreshExamples = function() {
   API.getExamples().then(function(data) {
     var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+      var $name = $("<h5>")
+        .text("Name: " + example.text);
+        var $category = $("<h6>")
+          .text("Category: " + example.category);
+          var $description = $("<h6>")
+            .text("Description: " + example.description);
+            var $price = $("<h6>")
+              .text("Price: " + example.price);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
           "data-id": example.id
         })
-        .append($a);
+        .append($name, $category, $description, $price);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+        .addClass("btn btn-danger float-left delete")
+        .text("Delete Product");
 
       $li.append($button);
 
@@ -67,12 +73,13 @@ var handleFormSubmit = function(event) {
 
   var example = {
     text: $exampleText.val().trim(),
+    category: $exampleCategory.val().trim(),
     description: $exampleDescription.val().trim(),
     price: $examplePrice.val().trim()
   };
 
-  if (!(example.text && example.description && example.price)) {
-    alert("You must enter a name, description, and price!");
+  if (!(example.text && example.price)) {
+    alert("You must at least enter a name and price!");
     return;
   }
 
@@ -81,6 +88,7 @@ var handleFormSubmit = function(event) {
   });
 
   $exampleText.val("");
+  $exampleCategory.val("");
   $exampleDescription.val("");
   $examplePrice.val("");
 };
