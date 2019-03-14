@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+.w3-sidebar{
+    background-color:  #de6fa1;
+}
+
+/* animated slideshow */
+.mySlides {display:none;}
+
+
+
+/* featured */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.featured{
+    width: 100px;
+    height: 100px;
+}
+.yellow{
+justify-content: center;
+margin: 20px 0px 0px 97px;
+
+}
+
+
+/* parallax */
+.parallax-slide {
+  height: 50vh;
+}
+.content-slide {
+  height: 100vh;
+  background: #fff;
+  text-align: center;
+}
+h1 {
+  padding-top: 10%;
+}
+#parallax1 {
+  background: url('https://images.unsplash.com/photo-1464347744102-11db6282f854?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1187&q=80') no-repeat center;
+  background-attachment: fixed;
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+#parallax2 {
+  background: url('https://images.unsplash.com/photo-1426869884541-df7117556757?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80') no-repeat center;
+  background-attachment: fixed;
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar  w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Gifts</a> 
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Shop</a> 
+    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Events</a> 
+    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Gallery</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact Us</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Company Name</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>Taste and see</b></h1>
+    <!-- <h1 class="w3-xxxlarge w3-text-red"><b>Showcase.</b></h1>
+    <hr style="width:50px;border:5px solid #de6fa1" class="w3-round"> -->
+  </div>
+  <!-- End of Navbar -->
+
+  <!-- Video -->
+  <!-- <div class="video">
+      <video width="520" height="240" controls>
+          <source src="https://videos.pexels.com/videos/the-art-in-baking-cookies-1711832" >
+          <source src="movie.ogg" type="video/ogg">
+        Your browser does not support the video tag.
+        </video>
+  </div> -->
+
+  <!-- End of video -->
+  <!-- animated slideshow -->
+  <div class="w3-content w3-section" style="max-width:1500px">
+      <img class="mySlides" src="https://images.unsplash.com/photo-1532590766017-8572c43b007c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" style="width:100%">
+      <img class="mySlides" src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" style="width:100%">
+      <img class="mySlides" src="https://images.unsplash.com/photo-1520181973954-cf92f53359ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" style="width:100%">
+    </div>
+ 
+
+ 
+
+        <!-- Info -->
+       <div class="container" style="height:419px;background-color:rgb(255, 160, 160);font-size:36px">
+        <p>Featured treats</p>
+    <div class="w3-quarter yellow">
+           
+        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Popsicle" style="width:100%">
+        <p>All I Need Is a Popsicle</p>
+        
+      </div>
+      <div class="w3-quarter">
+        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Salmon" style="width:100%">
+        <p>Salmon For Your Skin</p>
+        
+      </div>
+      <div class="w3-quarter">
+        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Sandwich" style="width:100%">
+        <p>The Perfect Sandwich, A Real Classic</p>
+        
+      </div>
+      
+      </div>
+              <!-- End of info -->
+
+              <!-- Product offer -->
+              <!-- <div style="height:500px;background-color:rgb(233, 232, 232);font-size:36px">
+                    This div is just here to enable scrolling.
+                    Tip: Try to remove the background-attachment property to remove the scrolling effect.
+                    </div> -->
+
+
+
+ 
+
+<div class="parallax"></div>
+
+<div id="parallax1" class="parallax-slide"></div>
+        <div style="background-color:rgba(243, 166, 166, 0.664);font-size:36px" id="content1" class="content-slide">
+          <h1>Content</h1>
+        </div>
+
+        <div id="parallax2" class="parallax-slide">
+          <h1 class="contact1"> Contact</h1>
+        </div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+
+
+// Carousel
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
+</script>
+
+</body>
+</html>
