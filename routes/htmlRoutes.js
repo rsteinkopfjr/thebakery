@@ -5,6 +5,16 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("index", {
+        title: "Homepage",
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+  app.get("/gallery", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("gallery", {
+        title: "Gallery",
         msg: "Welcome!",
         examples: dbExamples
       });
