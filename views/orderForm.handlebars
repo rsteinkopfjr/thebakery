@@ -1,0 +1,55 @@
+<div id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h3>Order Form</h3>
+                <br>
+                <h4>Place Your Order Below!</h4>
+                <form class="clearfix mb-4" action="POST">
+                    <div class="form-group">
+                        <label for="order-name">Name:</label>
+                        <input type="text" id="order-name" class="form-control" aria-describedby="order-name"
+                            placeholder="First and Last Name (require)">
+                    </div>
+                    <div class="form-group">
+                        <label for="order-email">Email:</label>
+                        <input type="text" id="order-email" class="form-control" aria-describedby="order-email"
+                            placeholder="Email Adress (required)">
+                    </div>
+                    <div class="form-group">
+                        <label for="order-phone">Phone:</label>
+                        <input type="text" id="order-phone" class="form-control" aria-describedby="order-phone"
+                            placeholder="Phone Number (required)">
+                    </div>
+                    <div id="product-order-area">
+                        <div class="form-group">
+                            <label for="order-product">Choose a Product</label>
+                            <select id="order-product" class="form-control" aria-describedby="order-product">
+                                <option value="undefined">Available Products</option>
+                                {{#each examples}}
+                                <option value="{{this.text}}">{{this.text}} - ${{this.price}} each</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-quantity">Enter Quantity</label>
+                            <input type="text" id="order-quantity" class="form-control"
+                                aria-describedby="order-quantity" placeholder="Enter Amount">
+                        </div>
+                    </div>
+                    {{!-- <div id="product-order-area-two"></div>
+                    <div>
+                        <button id="addProduct" class="btn btn-secondary btn-sm float-right">+</button>
+                    </div> --}}
+                    <br><br>
+                    <div>
+                        <button id="placeOrder" class="btn btn-success float-right">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

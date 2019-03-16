@@ -1,12 +1,23 @@
 // Get references to page elements
 var $exampleText = $("#example-text");
+var $exampleCategory = $("#example-category");
 var $exampleDescription = $("#example-description");
+var $examplePrice = $("#example-price");
 var $submitBtn = $("#submit");
+var $completeBtn = $("#completed");
 var $exampleList = $("#example-list");
+var $orderName = $("#order-name");
+var $orderEmail = $("#order-email");
+var $orderPhone = $("#order-phone");
+var $orderProduct = $("#order-product");
+var $orderQuantity = $("#order-quantity");
+var $placeOrderBtn = $("#placeOrder");
+var $addProductBtn = $("#addProduct");
+var $orderList = $("#order-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveExample: function (example) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -16,38 +27,71 @@ var API = {
       data: JSON.stringify(example)
     });
   },
-  getExamples: function() {
+  saveOrder: function (order) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/orders",
+      data: JSON.stringify(order)
+    });
+  },
+  getExamples: function () {
     return $.ajax({
       url: "api/examples",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  getOrders: function () {
+    return $.ajax({
+      url: "api/orders",
+      type: "GET"
+    });
+  },
+  deleteExample: function (id) {
     return $.ajax({
       url: "api/examples/" + id,
       type: "DELETE"
+    });
+  },
+  deleteOrder: function (id) {
+    return $.ajax({
+      url: "api/orders/" + id,
+      type: "DELETE"
+    });
+  },
+  completeOrder: function (id) {
+    return $.ajax({
+      url: "api/orders/update/" + id,
+      type: "PUT"
     });
   }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+var refreshExamples = function () {
+  API.getExamples().then(function (data) {
+    var $examples = data.map(function (example) {
+      var $name = $("<h5>")
+        .text("Name: " + example.text);
+      var $category = $("<h6>")
+        .text("Category: " + example.category);
+      var $description = $("<h6>")
+        .text("Description: " + example.description);
+      var $price = $("<h6>")
+        .text("Price: " + example.price);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
           "data-id": example.id
         })
-        .append($a);
+        .append($name, $category, $description, $price);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+        .addClass("btn btn-danger float-left delete")
+        .text("Delete Product");
 
       $li.append($button);
 
@@ -59,41 +103,146 @@ var refreshExamples = function() {
   });
 };
 
+var refreshOrders = function () {
+  API.getOrders().then(function (data) {
+    var $orders = data.map(function (order) {
+      var $name = $("<h5>")
+        .text("Name: " + order.name);
+      var $email = $("<h6>")
+        .text("Email: " + order.email);
+      var $phone = $("<h6>")
+        .text("Phone: " + order.phone);
+      var $product = $("<h6>")
+        .text("Product: " + order.product);
+      var $quantity = $("<h6>")
+        .text("Quantity: " + order.quantity);
+      var $timestamp = $("<h6>")
+        .text("Time Created: " + order.timestamp);
+
+      var $li = $("<li>")
+        .attr({
+          class: "list-group-item",
+          "data-id": order.id
+        })
+        .append($name, $email, $phone, $product, $quantity, $timestamp);
+
+      var $completeBtn = $("<button>")
+        .addClass("btn btn-success float-left complete")
+        .text("Completed");
+      var $button = $("<button>")
+        .addClass("btn btn-danger float-left delete")
+        .text("Delete");
+
+      $li.append($completeBtn, $button);
+
+      return $li;
+    });
+
+    $orderList.empty();
+    $orderList.append($orders);
+  });
+};
+
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+var handleFormSubmit = function (event) {
   event.preventDefault();
 
   var example = {
     text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    category: $exampleCategory.val().trim(),
+    description: $exampleDescription.val().trim(),
+    price: $examplePrice.val().trim()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(example.text && example.price)) {
+    alert("You must at least enter a name and price!");
     return;
   }
 
-  API.saveExample(example).then(function() {
+  API.saveExample(example).then(function () {
     refreshExamples();
   });
 
   $exampleText.val("");
+  $exampleCategory.val("");
   $exampleDescription.val("");
+  $examplePrice.val("");
 };
+
+
+// handleFormSubmit is called whenever we submit a new example
+// Save the new example to the db and refresh the list
+var handleOrderFormSubmit = function (event) {
+  event.preventDefault();
+  var date = new Date();
+  var timestamp = date.toLocaleString();
+
+  var order = {
+    name: $orderName.val().trim(),
+    email: $orderEmail.val().trim(),
+    phone: $orderPhone.val().trim(),
+    product: $orderProduct.val().trim(),
+    quantity: $orderQuantity.val().trim(),
+    timestamp: timestamp
+  };
+
+  if (!(order.email && order.quantity)) {
+    alert("You must at least enter an email and quantity!");
+    return;
+  }
+
+  API.saveOrder(order).then(function () {
+    refreshOrders();
+  });
+
+  $orderName.val("");
+  $orderEmail.val("");
+  $orderPhone.val("");
+  $orderProduct.val("undefined");
+  $orderQuantity.val("");
+};
+
+//Figure out in version 2
+// var handleAddProductForm = function (event) {
+//   event.preventDefault();
+//   console.log(this);
+//   var formItem = document.getElementById("product-order-area");
+//   var cln = formItem.cloneNode(true);
+//   document.getElementById("product-order-area-two").append(cln);
+// };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
+var handleDeleteBtnClick = function () {
+  console.log(this);
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
+  API.deleteExample(idToDelete).then(function () {
     refreshExamples();
+  });
+};
+
+
+var handleCompleteBtnClick = function () {
+  var idToUpdate = $(this)
+    .parent()
+    .attr("data-id");
+  console.log(idToUpdate);
+
+  API.completeOrder(idToUpdate).then(function (data) {
+    var $completed = data.update(function (order) {
+      console.log(order);
+    });
+    refreshOrders();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+$orderList.on("click", ".delete", handleDeleteBtnClick);
+$placeOrderBtn.on("click", handleOrderFormSubmit);
+$orderList.on("click", ".complete", handleCompleteBtnClick);
