@@ -1,6 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var path = require("path");
 
 var db = require("./models");
 
@@ -16,10 +17,12 @@ app.use(express.static("public"));
 app.engine(
   "handlebars",
   exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    partialsDir: path.join(__dirname, 'views', 'partials')
   })
 );
 app.set("view engine", "handlebars");
+
 
 // Routes
 require("./routes/apiRoutes")(app);
