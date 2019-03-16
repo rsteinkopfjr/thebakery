@@ -18,6 +18,17 @@
                 <br>
                 <h3>Orders:</h3>
                 <ul id="order-list" class="list-group">
+                    {{#each orders}}
+                    <li data-id="{{this.id}}" class="list-group-item">
+                        <h5>Customer Name: {{this.name}}</h5>
+                        <h6>Email Address: {{this.email}}</h6>
+                        <h6>Phone Number: {{this.phone}}</h6>
+                        <h6>Item: {{this.product}}</h6>
+                        <h6>Quantity: {{this.quantity}}</h6>
+                        <h6>Time Created: {{this.timestamp}}</h6>
+                        <button class="btn btn-danger float-left delete">Delete Product</button>
+                    </li>
+                    {{/each}}
                 </ul>
             </div>
         </div>
