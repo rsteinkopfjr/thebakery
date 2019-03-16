@@ -14,7 +14,7 @@ module.exports = function (app) {
   app.get("/products", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("products", {
-        msgProd: "Bakery Dashbord",
+        msgProd: "Bakery Dashboard",
         examples: dbExamples
       });
     });
@@ -23,7 +23,7 @@ module.exports = function (app) {
   app.get("/orders", function (req, res) {
     db.Order.findAll({}).then(function (dbOrders) {
       res.render("orders", {
-        msgOrd: "Bakery Dashbord",
+        msgOrd: "Bakery Dashboard",
         orders: dbOrders
       });
     });

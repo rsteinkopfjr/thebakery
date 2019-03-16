@@ -16,20 +16,38 @@
                     </li>
                 </ul>
                 <br>
-                <h3>Orders:</h3>
-                <ul id="order-list" class="list-group">
-                    {{#each orders}}
-                    <li data-id="{{this.id}}" class="list-group-item">
-                        <h5>Customer Name: {{this.name}}</h5>
-                        <h6>Email Address: {{this.email}}</h6>
-                        <h6>Phone Number: {{this.phone}}</h6>
-                        <h6>Item: {{this.product}}</h6>
-                        <h6>Quantity: {{this.quantity}}</h6>
-                        <h6>Time Created: {{this.timestamp}}</h6>
-                        <button class="btn btn-danger float-left delete">Delete Product</button>
-                    </li>
-                    {{/each}}
-                </ul>
+                <h3>Orders</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <h4>New Orders:</h4>
+                        <ul id="order-list" class="list-group">
+                            {{#each orders}}
+                            {{#unless this.completed}}
+                            <li data-id="{{this.id}}" class="list-group-item">
+                                <h5>Customer Name: {{this.name}}</h5>
+                                <h6>Email Address: {{this.email}}</h6>
+                                <h6>Phone Number: {{this.phone}}</h6>
+                                <h6>Item: {{this.product}}</h6>
+                                <h6>Quantity: {{this.quantity}}</h6>
+                                <h6>Time Created: {{this.timestamp}}</h6>
+                                <button class="btn btn-success float-left complete">Completed</button>
+                                <button class="btn btn-danger float-left delete">Delete</button>
+                            </li>
+                            {{/unless}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <h4>Completed Orders:</h4>
+                        <ul id="completed-order-list" class="list-group">
+                            {{#each orders}}
+                            {{#if this.completed}}
+
+                            {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

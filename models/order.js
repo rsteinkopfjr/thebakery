@@ -5,7 +5,11 @@ module.exports = function(sequelize, DataTypes) {
         phone: DataTypes.STRING,
         product: DataTypes.STRING,
         quantity: DataTypes.INTEGER,
-        timestamp: DataTypes.STRING
+        timestamp: DataTypes.STRING,
+        completed: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
     });
     return Order;
   };

@@ -60,6 +60,12 @@ var API = {
       url: "api/orders/" + id,
       type: "DELETE"
     });
+  },
+  completeOrder: function (id) {
+    return $.ajax({
+      url: "api/orders/update/" + id,
+      type: "PUT"
+    });
   }
 };
 
@@ -120,11 +126,14 @@ var refreshOrders = function () {
         })
         .append($name, $email, $phone, $product, $quantity, $timestamp);
 
+      var $completeBtn = $("<button>")
+        .addClass("btn btn-success float-left complete")
+        .text("Completed");
       var $button = $("<button>")
         .addClass("btn btn-danger float-left delete")
-        .text("Delete Product");
+        .text("Delete");
 
-      $li.append($button);
+      $li.append($completeBtn, $button);
 
       return $li;
     });
@@ -194,58 +203,6 @@ var handleOrderFormSubmit = function (event) {
   $orderQuantity.val("");
 };
 
-
-//Adding an item to the shopping cart
-// var handlePlaceOrder = function (event) {
-//   event.preventDefault();
-
-//   var itemValue = {
-//     name: $orderName.val().trim(),
-//     email: $orderEmail.val().trim(),
-//     phone: $orderPhone.val().trim(),
-//     product: $orderProduct.val().trim(),
-//     quantity: $orderQuantity.val().trim(),
-//     timestamp: timestamp
-//   }
-  // console.log(itemValue)
-
-//   if (itemValue.product === "undefined" || (!(itemValue.quantity && itemValue.name && itemValue.email && itemValue.phone))) {
-//     alert("You must fill in all forms!");
-//     return;
-//   }
-//   var $name = $("<h5>")
-//     .text("Name: " + itemValue.name);
-//   var $email = $("<h6>")
-//     .text("Email: " + itemValue.email);
-//   var $phone = $("<h6>")
-//     .text("Phone: " + itemValue.phone);
-//   var $product = $("<h6>")
-//     .text("Item: " + itemValue.product);
-//   var $quantity = $("<h6>")
-//     .text("Quantity: " + itemValue.quantity);
-//   var $timestamp = $("<h6>")
-//     .text("Time of Order: " + itemValue.timestamp);
-//   var $button = $("<button>")
-//     .addClass("btn btn-danger float-left delete")
-//     .text("Delete Product");
-
-//   var $order = $("<li>");
-//   $order.addClass("list-group-item");
-//   $order.append($name, $email, $phone, $product, $quantity, $timestamp);
-//   $order.append($button);
-
-
-//   $orderArea.append($order);
-//   $orderName.val("");
-//   $orderEmail.val("");
-//   $orderPhone.val("");
-//   $orderProduct.val("undefined");
-//   $orderQuantity.val("");
-// };
-
-// var handleCompleteOrder = function () {
-//   console.log(this);
-// }
 //Figure out in version 2
 // var handleAddProductForm = function (event) {
 //   event.preventDefault();
@@ -269,13 +226,16 @@ var handleDeleteBtnClick = function () {
 };
 
 
-var handleRemoveBtnClick = function () {
-  console.log(this);
-  var idToDelete = $(this)
+var handleCompleteBtnClick = function () {
+  var idToUpdate = $(this)
     .parent()
     .attr("data-id");
+  console.log(idToUpdate);
 
-  API.deleteOrder(idToDelete).then(function () {
+  API.completeOrder(idToUpdate).then(function (data) {
+    var $completed = data.update(function (order) {
+      console.log(order);
+    });
     refreshOrders();
   });
 };
@@ -283,5 +243,6 @@ var handleRemoveBtnClick = function () {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+$orderList.on("click", ".delete", handleDeleteBtnClick);
 $placeOrderBtn.on("click", handleOrderFormSubmit);
-$orderList.on("click", ".delete", handleRemoveBtnClick);
+$orderList.on("click", ".complete", handleCompleteBtnClick);
