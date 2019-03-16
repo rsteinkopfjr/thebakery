@@ -223,6 +223,9 @@ var handleDeleteBtnClick = function () {
   API.deleteExample(idToDelete).then(function () {
     refreshExamples();
   });
+  API.deleteOrder(idToDelete).then(function () {
+    refreshOrders();
+  });
 };
 
 
