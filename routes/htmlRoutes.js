@@ -21,18 +21,19 @@ module.exports = function (app) {
   });
   // Load orders page
   app.get("/orders", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Order.findAll({}).then(function (dbOrders) {
       res.render("orders", {
         msgOrd: "Bakery Dashbord",
-        examples: dbExamples
+        orders: dbOrders
       });
     });
   });
   // Load order form page
   app.get("/orderform", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Example.findAll({}).then(function (dbExamples, dbOrders) {
       res.render("orderForm", {
-        examples: dbExamples
+        examples: dbExamples,
+        orders: dbOrders
       });
     });
   });
@@ -44,6 +45,17 @@ module.exports = function (app) {
     ) {
       res.render("example", {
         example: dbExample
+      });
+    });
+  });
+
+  // Load order page and pass in an example by id
+  app.get("/order/:id", function (req, res) {
+    db.Order.findOne({ where: { id: req.params.id } }).then(function (
+      dbOrder
+    ) {
+      res.render("order", {
+        order: dbOrder
       });
     });
   });
