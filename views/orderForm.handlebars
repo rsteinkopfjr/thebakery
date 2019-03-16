@@ -4,37 +4,50 @@
             <div class="col-8 offset-2">
                 <h3>Order Form</h3>
                 <br>
-                <div>
-                <a href="/">← Back To Dashboard</a>
-                </div>
-                <br>
                 <h4>Place Your Order Below!</h4>
                 <form class="clearfix mb-4" action="POST">
                     <div class="form-group">
-                        <label for="example-text">Choose a Product</label>
-                        <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-                            placeholder="Enter First and Last Name (required)">
+                        <label for="order-name">Name:</label>
+                        <input type="text" id="order-name" class="form-control" aria-describedby="order-name"
+                            placeholder="First and Last Name (require)">
                     </div>
                     <div class="form-group">
-                        <label for="example-category">Select Quantity</label>
-                        <input type="text" id="example-category" class="form-control"
-                            aria-describedby="example-category" placeholder="Enter Email (required)">
+                        <label for="order-email">Email:</label>
+                        <input type="text" id="order-email" class="form-control" aria-describedby="order-email"
+                            placeholder="Email Adress (required)">
                     </div>
-                    <button id="submit" class="btn btn-primary float-right">Add to Cart</button>
+                    <div class="form-group">
+                        <label for="order-phone">Phone:</label>
+                        <input type="text" id="order-phone" class="form-control" aria-describedby="order-phone"
+                            placeholder="Phone Number (required)">
+                    </div>
+                    <div id="product-order-area">
+                        <div class="form-group">
+                            <label for="order-product">Choose a Product</label>
+                            <select id="order-product" class="form-control" aria-describedby="order-product">
+                                <option value="undefined">Available Products</option>
+                                {{#each examples}}
+                                <option value="{{this.text}}">{{this.text}} - ${{this.price}} each</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-quantity">Enter Quantity</label>
+                            <input type="text" id="order-quantity" class="form-control"
+                                aria-describedby="order-quantity" placeholder="Enter Amount">
+                        </div>
+                    </div>
+                    {{!-- <div id="product-order-area-two"></div>
+                    <div>
+                        <button id="addProduct" class="btn btn-secondary btn-sm float-right">+</button>
+                    </div> --}}
+                    <br><br>
+                    <div>
+                        <button id="placeOrder" class="btn btn-success float-right">Place Order</button>
+                    </div>
                 </form>
-                <h3>Cart:</h3>
-                <ul id="example-list" class="list-group">
-                    {{#each examples}}
-                    <li data-id="{{this.id}}" class="list-group-item">
-                            <h5>Name: {{this.text}}</h5>
-                            <h6>Category: {{this.category}}</h6>
-                            <h6>Description: {{this.description}}</h6>
-                            <h6>Price: {{this.price}}</h6>
-                        <button class="btn btn-danger float-right delete">Remove</button>
-                    </li>
-                    {{/each}}
-
-                    <button id="submit" class="btn btn-primary float-right">Checkout</button>
+                <h3>Orders:</h3>
+                <ul id="order-area" class="list-group">
                 </ul>
             </div>
         </div>

@@ -2,11 +2,21 @@
     <div class="container">
         <div class="row">
             <div class="col-8 offset-2">
-                <h3>Products Section</h3>
+                <h1>{{msgProd}}</h1>
                 <br>
-                <div>
-                <a href="/">← Back To Dashboard</a>
-                </div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products">Product Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders">Order Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Customer Inqueries</a>
+                    </li>
+                </ul>
+                <br>
+                <h3>Products Section</h3>
                 <br>
                 <h4>Add a Product Below</h4>
                 <form class="clearfix mb-4" action="POST">
@@ -36,10 +46,10 @@
                 <ul id="example-list" class="list-group">
                     {{#each examples}}
                     <li data-id="{{this.id}}" class="list-group-item">
-                            <h5>Name: {{this.text}}</h5>
-                            <h6>Category: {{this.category}}</h6>
-                            <h6>Description: {{this.description}}</h6>
-                            <h6>Price: {{this.price}}</h6>
+                        <h5>Name: {{this.text}}</h5>
+                        <h6>Category: {{this.category}}</h6>
+                        <h6>Description: {{this.description}}</h6>
+                        <h6>Price: {{this.price}}</h6>
                         <button class="btn btn-danger float-left delete">Delete Product</button>
                     </li>
                     {{/each}}
