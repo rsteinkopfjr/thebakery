@@ -45,4 +45,14 @@ module.exports = function (app) {
       res.json(dbOrder);
     });
   });
+
+  app.put("/api/orders/update/:id", function (req, res) {
+    db.Order.update({
+      completed: true
+    }, { where: { id: req.params.id} }).then(function(
+      dbOrder
+    ) {
+      res.json(dbOrder);
+    })
+  })
 };

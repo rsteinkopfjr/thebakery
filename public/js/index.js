@@ -14,6 +14,8 @@ var $orderQuantity = $("#order-quantity");
 var $placeOrderBtn = $("#placeOrder");
 var $addProductBtn = $("#addProduct");
 var $orderList = $("#order-list");
+var $completedOrderList = $("#completed-order-list");
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -49,6 +51,12 @@ var API = {
       type: "GET"
     });
   },
+  completeOrder: function (id) {
+    return $.ajax({
+      url: "api/orders/update/" + id,
+      type: "PUT"
+    });
+  },
   deleteExample: function (id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -59,12 +67,6 @@ var API = {
     return $.ajax({
       url: "api/orders/" + id,
       type: "DELETE"
-    });
-  },
-  completeOrder: function (id) {
-    return $.ajax({
-      url: "api/orders/update/" + id,
-      type: "PUT"
     });
   }
 };
@@ -107,13 +109,13 @@ var refreshOrders = function () {
   API.getOrders().then(function (data) {
     var $orders = data.map(function (order) {
       var $name = $("<h5>")
-        .text("Name: " + order.name);
+        .text("Customer Name: " + order.name);
       var $email = $("<h6>")
-        .text("Email: " + order.email);
+        .text("Email Address: " + order.email);
       var $phone = $("<h6>")
-        .text("Phone: " + order.phone);
+        .text("Phone Number: " + order.phone);
       var $product = $("<h6>")
-        .text("Product: " + order.product);
+        .text("Item: " + order.product);
       var $quantity = $("<h6>")
         .text("Quantity: " + order.quantity);
       var $timestamp = $("<h6>")
@@ -129,17 +131,20 @@ var refreshOrders = function () {
       var $completeBtn = $("<button>")
         .addClass("btn btn-success float-left complete")
         .text("Completed");
+
       var $button = $("<button>")
         .addClass("btn btn-danger float-left delete")
         .text("Delete");
 
       $li.append($completeBtn, $button);
 
-      return $li;
+      return $orders;
     });
 
     $orderList.empty();
+    $completedOrderList.empty();
     $orderList.append($orders);
+    $completedOrderList.prepend($orders);
   });
 };
 
@@ -235,17 +240,16 @@ var handleCompleteBtnClick = function () {
     .attr("data-id");
   console.log(idToUpdate);
 
-  API.completeOrder(idToUpdate).then(function (data) {
-    var $completed = data.update(function (order) {
-      console.log(order);
-    });
+  API.completeOrder(idToUpdate).then(function () {
     refreshOrders();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
-$orderList.on("click", ".delete", handleDeleteBtnClick);
 $placeOrderBtn.on("click", handleOrderFormSubmit);
 $orderList.on("click", ".complete", handleCompleteBtnClick);
+$completedOrderList.on("click", ".complete", handleCompleteBtnClick);
+$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$orderList.on("click", ".delete", handleDeleteBtnClick);
+$completedOrderList.on("click", ".delete", handleDeleteBtnClick);
