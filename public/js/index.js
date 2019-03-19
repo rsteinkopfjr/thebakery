@@ -142,9 +142,10 @@ var refreshOrders = function () {
     });
 
     $orderList.empty();
-    $completedOrderList.empty();
     $orderList.append($orders);
-    $completedOrderList.prepend($orders);
+    $completedOrderList.empty();
+    $completedOrderList.append($orders);
+
   });
 };
 
@@ -192,8 +193,8 @@ var handleOrderFormSubmit = function (event) {
     timestamp: timestamp
   };
 
-  if (!(order.email && order.quantity)) {
-    alert("You must at least enter an email and quantity!");
+  if ((order.product === "undefined") || !(order.name && order.email && order.product && order.quantity)) {
+    alert("You must at least enter your name, email, product and quantity!");
     return;
   }
 
@@ -220,7 +221,6 @@ var handleOrderFormSubmit = function (event) {
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function () {
-  console.log(this);
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
@@ -238,7 +238,6 @@ var handleCompleteBtnClick = function () {
   var idToUpdate = $(this)
     .parent()
     .attr("data-id");
-  console.log(idToUpdate);
 
   API.completeOrder(idToUpdate).then(function () {
     refreshOrders();
