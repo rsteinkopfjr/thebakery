@@ -1,99 +1,32 @@
 <!--Vertical Menu-->
-		<header class="wrap-vertcal-menu">
-			<!-- Header desktop -->
-			<div id="wrap-header-vertical" >
-				<!-- Logo -->		
-				<div class="logo col_header">
-					<a href="./index.handlebars"><img alt="main-logo" src="images/TasteLogo.png"></a>
-				</div>
-				<!-- Menu -->
-				<div class="wrap-vertcal-side-menu col_header" >
-					<nav class="side-menu">
-						<ul class="main-menu">
-							<li>
-								<a href="/">Home</a>
-								<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-								<ul class="sub-menu">
-									<li><a href="index.handlebars">Home</a></li>
-						
-								</ul>
-							</li>
-							<li>
-								<a href="/gallery">Gallery</a>
-								<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-								<ul class="sub-menu">
-									<li><a href="./gallery.handlebars">Gallery</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="/about-us">About us</a>
-							</li>
-							<li>
-								<a href="/shop-page">SHOP ONLINE!</a>
-								<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-								<ul class="sub-menu">
-									<li><a href="/shop-page">Shop Page</a></li>
-									<li><a href="/shopping-cart">Shopping Cart</a></li>
-									<li><a href="/check-out">Check Out</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="/contact-us">Contact</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
-
-			</div>
-
-			<!-- Socials -->
-			<div class="icon-header col_header">
-				<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-				<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-				<a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-				<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-			</div>
-		</header>
-
-		<!--Header Mobile-->
-		<div id="wrap_header_mobile">
-			<!-- Logo moblie -->	
-			<div class="logo-mobile">
-				<a href="/"><img alt="main-logo" src="images/TasteLogo.png"></a>
-			</div>
-			<!-- Button show menu -->
-			<div class="btn-show-menu">
-				<button class="btn-show-menu-mobile hamburger hamburger--squeeze" type="button">
-					<span class="hamburger-box">
-						<span class="hamburger-inner"></span>
-					</span>
-				</button>
-			</div>	
+<header class="wrap-vertcal-menu">
+	<!-- Header desktop -->
+	<div id="wrap-header-vertical">
+		<!-- Logo -->
+		<div class="logo col_header">
+			<a href="./index.handlebars"><img alt="main-logo" src="images/TasteLogo.png"></a>
 		</div>
-
-		<!--Menu Mobile-->
-		<div class="wrap-side-menu" >
+		<!-- Menu -->
+		<div class="wrap-vertcal-side-menu col_header">
 			<nav class="side-menu">
 				<ul class="main-menu">
 					<li>
 						<a href="/">Home</a>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 						<ul class="sub-menu">
-							<li><a href="/">Homepage</a></li>
+							<li><a href="index.handlebars">Home</a></li>
+
 						</ul>
 					</li>
 					<li>
 						<a href="/gallery">Gallery</a>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 						<ul class="sub-menu">
-							<li><a href="/gallery">Gallery</a></li>
+							<li><a href="./gallery.handlebars">Gallery</a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="/about-us">About us</a>
-					</li>
-					<li>
-						<a href="/shop-page">Shop!</a>
+						<a href="/shop-page">SHOP ONLINE!</a>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 						<ul class="sub-menu">
 							<li><a href="/shop-page">Shop Page</a></li>
@@ -105,234 +38,263 @@
 						<a href="/contact-us">Contact</a>
 					</li>
 				</ul>
+				<button class="login-button">Login</button>
 			</nav>
 		</div>
 
-		<!--Content page-->
-		<div class="wrap-content-page">
-			<!-- Slider -->
-			<section id="slider-deli">
-				<!-- Slider -->
-				<div class="rev_slider_wrapper for-vertical-page">
-					<div id="rev_slider_2" class="rev_slide " style="display: none;">
-						<ul>
-							<!-- Slide 1 -->
-							<li data-transition="fade">
-								<img src="images/Sylvanas Banner-Final-page-001.jpg" alt="Seasonal Flavours" class="rev-slidebg">
-								
-								<div id="btn-slide-1" class="tp-caption tp-resizeme btn-slide"
-								data-frames='[{"delay":2000,"speed":1500,"frame":"0","from":"y:bottom;rX:-20deg;rY:-20deg;rZ:0deg;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							    data-x="center" 
-							    data-y="center" 
-							    data-hoffset="0" 
-							    data-voffset="['80','80','110','110']" 
-							    data-width="['910','910','380','380']"
-								data-height="['auto']"
-								data-color="black"
-								>
-								<a href="shop-page.html" class="btn1">Order Online!</a>
-								</div>
-							</li>
+	</div>
 
-							<!-- Slide 2 -->
-							<li data-transition="fade">
-								<img src="images/TasteVintage.png" alt="Fresh Ingredients" class="rev-slidebg">
-								<h3 class="tp-caption tp-resizeme  caption-1" 
-								data-frames='[{"delay":500,"split":"chars","splitdelay":0.05,"speed":1500,"frame":"0","from":"x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							    data-x="center" 
-							    data-y="center" 
-							    data-hoffset="0" 
-							    data-voffset="['-80','-80','-140','-140']" 
-							    data-width="['1140','960','720','540']"
-							    data-lineheight="['150', '150', '120', '100']"
-							    data-fontsize="['110', '110', '100', '90']"
-							    data-height="['auto']"></h3>
+	<!-- Socials -->
+	<div class="icon-header col_header">
+		<a href="https://www.facebook.com/tasteandseebyaudrey"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		<a href="https://twitter.com/TasteNSeeAudrey"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		<a href="https://www.instagram.com/tasteandseebyaudrey/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+	</div>
+</header>
 
-							    <div  class="tp-caption tp-resizeme btn-slide caption-2"
-								data-frames='[{"delay":2500,"speed":1000,"frame":"0","from":"z:0;rX:0deg;rY:0;rZ:0;sX:2;sY:2;skX:0;skY:0;opacity:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							    data-x="center" 
-							    data-y="center" 
-							    data-hoffset="0" 
-							    data-voffset="['15','15','15','5']" 
-							    data-width="['910','910','380','380']"
-							    data-height="['auto']">Bake the world a better place...</div>
-								
-								<div id="btn-slide-2" class="tp-caption tp-resizeme btn-slide"
-								data-frames='[{"delay":3100,"speed":1500,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							    data-x="center" 
-							    data-y="center" 
-							    data-hoffset="0" 
-							    data-voffset="['110','110','140','140']" 
-							    data-width="['910','910','380','380']"
-							    data-height="['auto']">
-								</div>
-							</li>
+<!--Header Mobile-->
+<div id="wrap_header_mobile">
+	<!-- Logo moblie -->
+	<div class="logo-mobile">
+		<a href="/"><img alt="main-logo" src="images/TasteLogo.png"></a>
+	</div>
+	<!-- Button show menu -->
+	<div class="btn-show-menu">
+		<button class="btn-show-menu-mobile hamburger hamburger--squeeze" type="button">
+			<span class="hamburger-box">
+				<span class="hamburger-inner"></span>
+			</span>
+		</button>
+	</div>
+</div>
 
-							<!-- Slide 3 -->
-							<li data-transition="fade">
-								<img src="images/Baking.jpeg" alt="Deli Restaurant" class="rev-slidebg">
-								<h3 class="tp-caption tp-resizeme caption-1" 
-								data-frames='[{"delay":500,"split":"chars","splitdelay":0.05,"speed":1300,"frame":"0","from":"y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							    data-x="center" 
-							    data-y="center" 
-							    data-hoffset="0" 
-							    data-voffset="['-50','-50','-100','-120']"
-							    data-width="['1140','960','720','540']"
-							    data-lineheight="['150', '150', '120', '100']"
-							    data-fontsize="['110', '110', '100', '90']"
-							    data-height="['auto']">Always fresh!</h3>
-								
-								<div id="btn-slide-3" class="tp-caption tp-resizeme btn-slide"
-								data-frames='[{"delay":2300,"speed":1500,"frame":"0","from":"y:bottom;rZ:90deg;sX:2;sY:2;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							    data-x="center" 
-							    data-y="center" 
-							    data-hoffset="0" 
-							    data-voffset="['80','80','110','110']"
-							    data-width="['910','910','380','380']"
-							    data-height="['auto']">
-										<a href="shop-page.html" class="btn1">Shop Online!</a>
-								</div>
-							</li>
-						</ul>				
-					</div>
+<!--Menu Mobile-->
+<div class="wrap-side-menu">
+	<nav class="side-menu">
+		<ul class="main-menu">
+			<li>
+				<a href="/">Home</a>
+				<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+				<ul class="sub-menu">
+					<li><a href="/">Homepage</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="/gallery">Gallery</a>
+				<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+				<ul class="sub-menu">
+					<li><a href="/gallery">Gallery</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="/shop-page">Shop!</a>
+				<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+				<ul class="sub-menu">
+					<li><a href="/shop-page">Shop Page</a></li>
+					<li><a href="/shopping-cart">Shopping Cart</a></li>
+					<li><a href="/check-out">Check Out</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="/contact-us">Contact</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+
+<!--Content page-->
+<div class="wrap-content-page">
+	<!-- Slider -->
+	<section id="slider-bakery">
+		<!-- Slider -->
+		<div class="rev_slider_wrapper for-vertical-page">
+			<div id="rev_slider_2" class="rev_slide " style="display: none;">
+				<ul>
+					<!-- Slide 1 -->
+					<li data-transition="fade">
+						<img src="images/Sylvanas Banner-Final-page-001.jpg" alt="Seasonal Flavours"
+							class="rev-slidebg">
+
+						<div id="btn-slide-1" class="tp-caption tp-resizeme btn-slide"
+							data-frames='[{"delay":2000,"speed":1500,"frame":"0","from":"y:bottom;rX:-20deg;rY:-20deg;rZ:0deg;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							data-x="center" data-y="center" data-hoffset="0" data-voffset="['80','80','110','110']"
+							data-width="['910','910','380','380']" data-height="80%" data-color="black">
+							<a href="shop-page.html" class="btn1">Order Online!</a>
+						</div>
+					</li>
+
+					<!-- Slide 2 -->
+					<li data-transition="fade">
+						<img src="images/TasteVintage.png" alt="Fresh Ingredients" class="rev-slidebg">
+						<h3 class="tp-caption tp-resizeme  caption-1"
+							data-frames='[{"delay":500,"split":"chars","splitdelay":0.05,"speed":1500,"frame":"0","from":"x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							data-x="center" data-y="center" data-hoffset="0" data-voffset="['-80','-80','-140','-140']"
+							data-width="['1140','960','720','540']" data-lineheight="['150', '150', '120', '100']"
+							data-fontsize="['110', '110', '100', '90']" data-height="['auto']"></h3>
+
+						<div class="tp-caption tp-resizeme btn-slide caption-2"
+							data-frames='[{"delay":2500,"speed":1000,"frame":"0","from":"z:0;rX:0deg;rY:0;rZ:0;sX:2;sY:2;skX:0;skY:0;opacity:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							data-x="center" data-y="center" data-hoffset="0"  data-fontsize="['50', '50', '45', '40']">Bake the world a better
+							place...</div>
+
+						<div id="btn-slide-2" class="tp-caption tp-resizeme btn-slide"
+							data-frames='[{"delay":3100,"speed":1500,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							data-x="center" data-y="center" data-hoffset="0" data-voffset="['110','110','140','140']"
+							data-width="['910','910','380','380']" data-height="['auto']">
+						</div>
+					</li>
+
+					<!-- Slide 3 -->
+					<li data-transition="fade">
+						<img src="images/Baking.jpeg" alt="Deli Restaurant" class="rev-slidebg">
+						<h3 class="tp-caption tp-resizeme caption-1"
+							data-frames='[{"delay":500,"split":"chars","splitdelay":0.05,"speed":1300,"frame":"0","from":"y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							data-x="center" data-y="center" data-hoffset="0" data-voffset="['-50','-50','-100','-120']"
+							data-width="['1140','960','720','540']" data-lineheight="['150', '150', '120', '100']"
+							data-fontsize="['110', '110', '100', '90']" data-color="white" data-height="['auto']">Always
+							fresh!</h3>
+
+						<div id="btn-slide-3" class="tp-caption tp-resizeme btn-slide"
+							data-frames='[{"delay":2300,"speed":1500,"frame":"0","from":"y:bottom;rZ:90deg;sX:2;sY:2;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							data-x="center" data-y="center" data-hoffset="0" data-voffset="['80','80','110','110']"
+							data-width="['910','910','380','380']" data-height="['auto']">
+
+							<a href="shop-page.html" class="btn1">Shop Online!</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- End Slider -->
+	</section>
+
+	<!-- Intro -->
+	<div class="wrap-intro">
+		<div class="container">
+			<div class="row">
+				<div class="text-intro col-sm-10 col-md-6">
+					<h3>Meet the Owner</h3>
+					<h2>Our Bakery</h2>
+					<p>
+						"Sometimes the smallest steps in the right direction ends up being the biggest step of your
+						life. Tip toe if you must but take the step."
+					</p>
+					<p>
+						Since beginning my journey in this industry, my dedication to the work and motivation to grow
+						have led me to exceptional projects and experiences.
+						I’m grateful for a profession I’m passionate about, and am proud to share examples of my
+						greatest work. Take a moment to check out my portfolio, and get in touch with any questions.
+					</p>
 				</div>
-				<!-- End Slider -->
-			</section>
 
-			<!-- Intro -->
-			<div class="wrap-intro">
-				<div class="container">
-					<div class="row">
-						<div class="text-intro col-sm-10 col-md-6">
-							<h3>Meet the Owner</h3>
-							<h2>Our Bakery</h2>
-							<p>
-								"Sometimes the smallest steps in the right direction ends up being the biggest step of your life. Tip toe if you must but take the step."
-							</p>
-							<p>
-								Since beginning my journey in this industry, my dedication to the work and motivation to grow have led me to exceptional projects and experiences. 
-								I’m grateful for a profession I’m passionate about, and am proud to share examples of my greatest work. Take a moment to check out my portfolio, and get in touch with any questions.
-							</p>
-						</div>
-
-								<div class="pic-intro col-6 wow zoomIn">
-									<div class="pic-intro">
-										<img src="images/owner2.png" alt="picture-about-us">
-									</div>
-								</div>
-							</div>
-						</div>
-
+				<div class="pic-intro col-6 wow zoomIn">
+					<div class="pic-intro">
+						<img src="images/owner2.png" alt="picture-about-us">
 					</div>
 				</div>
 			</div>
-
-	
-
-		
-			
-			<!-- Event -->
-			<section id="event">
-				<div class="container">
-					<!-- title event -->
-					<div class="wrap-title-event row">
-						<div id="title-event" class="col-12">
-							<h6>Discover Our</h6>
-							<h2>News & Events</h2>
-						</div>
-							<div class="content-event col-sm-10 col-md-8 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-								<div class="img-event">
-									<a href="blog-detail.html"><img alt="picture-event" src="images/img-event-04.jpg"></a>
-								</div>
-								<h3><a class="hover-link-color" href="blog-detail.html">Instagram is Changing Restaurants</a></h3>
-								<p>
-									Proin lacinia nisl ut ultricies posuere nulla ut imperdiet nunc. Quisque id tellus vitae mauris feugiat comodone, donec pretium odio nec sagittis euismod.
-								</p>
-								<a href="blog-detail.html" class="read-more-event">READ MORE</a>
-							</div>
-
-							<div class="content-event col-sm-10 col-md-8 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-								<div class="img-event">
-									<a href="blog-detail.html"><img alt="picture-event" src="images/img-event-05.jpg"></a>
-								</div>
-								<h3><a class="hover-link-color" href="blog-detail.html">Deli Successful Catering Event</a></h3>
-								<p>
-									Donec a fringilla tortor. Vestibulum viverra accumsan ipsum nec luctus. Integer tortor dolor, suscipit sed justo et, interdum dignissim arcu. 
-								</p>
-								<a href="blog-detail.html" class="read-more-event">READ MORE</a>
-							</div>
-
-							<div class="content-event col-sm-10 col-md-8 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-								<div class="img-event">
-									<a href="blog-detail.html"><img alt="picture-event" src="images/img-event-06.jpg"></a>
-								</div>
-								<h3><a class="hover-link-color" href="blog-detail.html">Deli Summer Auscoutics</a></h3>
-								<p>
-									Duis lorem velit, sodales eget posuere in, commodo dictum felis. Aenean leo neque, pharetra vitae dui et, pretium venenatis metus.
-								</p>
-								<a href="blog-detail.html" class="read-more-event">READ MORE</a>
-							</div>
-					</div>			
-				</div>
-			</section>
-
-			<!-- Footer -->
-			<footer>
-				<div class="container">
-					<div class="content-footer for-vertical-page row">
-						<div class="column-footer col-lg-5 col-md-9 col-sm-7">
-							<h3>Contact information</h3>
-							<ul>
-								<li>ADDRESS: 100 Tenth Avenue, New York City, NY 1001</li>
-								<li>FOR BOOKING: (044) 359 0173</li>
-							</ul>
-						</div>
-
-						<div class="column-footer col-lg-7 col-md-9 col-sm-7">
-							<h3>Restaurant hours</h3>
-							<div class="row">
-								<ul class="restaurant-hours-left col-lg-6 col-md-6 col-sm-10">
-									<li>
-										<span class="column-left">LUNCH:</span>
-									</li>
-									<li>
-										<span class="column-left">Monday - Friday: 11:30AM - 2:00PM</span>
-									</li>
-									<li>
-										<span class="column-left">Saturday - Sunday: 11:00AM - 1:00PM</span>
-									</li>
-								</ul>
-								
-								<ul class="restaurant-hours-right col-lg-6 col-md-6 col-sm-10">
-									<li>
-										<span class="column-right">DINNER:</span>
-									</li>
-									<li>
-										<span class="column-right">Monday - Friday: 5:30PM - 11:00PM</span>
-									</li>
-									<li>
-										<span class="column-right">Saturday - Sunday: 4:30PM - 10:00PM</span>
-									</li>
-								</ul>
-							</div>
-							
-							<div class="line-divide first-line"></div>
-						</div>
-					</div>
-				</div>
-				<div class="wrap-bottom-footer">
-					<div class="container">
-						<div class="bottom-footer row justify-content-between">
-							<div class="col-12 col-sm-7">© 2019 TeamX. All rights reserved.</div>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
-	
-		<!-- Back to top -->
-		<div class="btn-back-to-top" id="myBtn">
-			<span class="symbol-btn-back-to-top">
-				<i class="fa fa-angle-double-up" aria-hidden="true"></i>
-			</span>
+
+	</div>
+</div>
+</div>
+
+
+
+
+
+<!-- Event -->
+<section id="event">
+	<div class="container">
+		<!-- title event -->
+		<div class="wrap-title-event row">
+			<div id="title-event" class="col-12">
+				<h6>Meet us at our upcoming</h6>
+				<h2>Pop-up Event</h2>
+			</div>
+
+			<div class="content-event col-sm-10 col-md-8 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+				<div class="img-event">
+					<a href="blog-detail.html"><img alt="picture-event" src="images/img-event-05.jpg"></a>
+				</div>
+				<h3><a class="hover-link-color" href="blog-detail.html">Deli Successful Catering Event</a></h3>
+				<p>
+					Donec a fringilla tortor. Vestibulum viverra accumsan ipsum nec luctus. Integer tortor dolor,
+					suscipit sed justo et, interdum dignissim arcu.
+				</p>
+			</div>
+
+			<div class="content-event col-sm-10 col-md-8 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+				<div class="img-event">
+					<a href="blog-detail.html"><img alt="picture-event" src="images/img-event-06.jpg"></a>
+				</div>
+				<h3><a class="hover-link-color" href="blog-detail.html">Deli Summer Auscoutics</a></h3>
+				<p>
+					Duis lorem velit, sodales eget posuere in, commodo dictum felis. Aenean leo neque, pharetra vitae
+					dui et, pretium venenatis metus.
+				</p>
+			</div>
 		</div>
+	</div>
+</section>
+
+<!-- Footer -->
+<footer>
+	<div class="container">
+		<div class="content-footer for-vertical-page row">
+			<div class="column-footer col-lg-5 col-md-9 col-sm-7">
+				<h3>Contact information</h3>
+				<ul>
+					<li>ADDRESS: 100 Tenth Avenue, New York City, NY 1001</li>
+					<li>FOR BOOKING: (044) 359 0173</li>
+				</ul>
+			</div>
+
+			<div class="column-footer col-lg-7 col-md-9 col-sm-7">
+				<h3>Restaurant hours</h3>
+				<div class="row">
+					<ul class="restaurant-hours-left col-lg-6 col-md-6 col-sm-10">
+						<li>
+							<span class="column-left">LUNCH:</span>
+						</li>
+						<li>
+							<span class="column-left">Monday - Friday: 11:30AM - 2:00PM</span>
+						</li>
+						<li>
+							<span class="column-left">Saturday - Sunday: 11:00AM - 1:00PM</span>
+						</li>
+					</ul>
+
+					<ul class="restaurant-hours-right col-lg-6 col-md-6 col-sm-10">
+						<li>
+							<span class="column-right">DINNER:</span>
+						</li>
+						<li>
+							<span class="column-right">Monday - Friday: 5:30PM - 11:00PM</span>
+						</li>
+						<li>
+							<span class="column-right">Saturday - Sunday: 4:30PM - 10:00PM</span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="line-divide first-line"></div>
+			</div>
+		</div>
+	</div>
+	<div class="wrap-bottom-footer">
+		<div class="container">
+			<div class="bottom-footer row justify-content-between">
+				<div class="col-12 col-sm-7">© 2019 TeamX. All rights reserved.</div>
+			</div>
+		</div>
+	</div>
+</footer>
+</div>
+
+<!-- Back to top -->
+<div class="btn-back-to-top" id="myBtn">
+	<span class="symbol-btn-back-to-top">
+		<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+	</span>
+</div>

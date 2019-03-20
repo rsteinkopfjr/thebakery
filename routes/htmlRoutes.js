@@ -20,15 +20,6 @@ module.exports = function(app) {
       });
     });
   });
-  app.get("/about-us", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("about-us", {
-        title: "about-us",
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
   app.get("/check-out", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("check-out", {
