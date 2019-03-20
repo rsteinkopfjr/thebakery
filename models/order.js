@@ -1,8 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
     var Order = sequelize.define("Order", {
-        name: DataTypes.STRING,
+        firstname: DataTypes.STRING,
+        lastname: DataTypes.STRING,
         email: DataTypes.STRING,
         phone: DataTypes.STRING,
+        pickupdate: DataTypes.STRING,
+        pickuptime: DataTypes.STRING,
         product: DataTypes.STRING,
         quantity: DataTypes.INTEGER,
         timestamp: DataTypes.STRING,

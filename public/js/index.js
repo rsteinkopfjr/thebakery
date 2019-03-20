@@ -6,9 +6,12 @@ var $examplePrice = $("#example-price");
 var $submitBtn = $("#submit");
 var $completeBtn = $("#completed");
 var $exampleList = $("#example-list");
-var $orderName = $("#order-name");
+var $orderFirstName = $("#order-first-name");
+var $orderLastName = $("#order-last-name");
 var $orderEmail = $("#order-email");
 var $orderPhone = $("#order-phone");
+var $orderPickDate = $("#order-pick-date");
+var $orderPickTime = $("#order-pick-time");
 var $orderProduct = $("#order-product");
 var $orderQuantity = $("#order-quantity");
 var $placeOrderBtn = $("#placeOrder");
@@ -77,7 +80,6 @@ var refreshExamples = function () {
     $exampleList.empty();
     for (var i = 0; i < data.length; i++) {
       var example = data[i];
-      console.log(example);
       var $name = $("<h5>")
         .text("Name: " + example.text);
       var $category = $("<h6>")
@@ -100,7 +102,7 @@ var refreshExamples = function () {
 
       $li.append($button);
       $exampleList.append($li);
-      
+
     };
 
     // $exampleList.append($li);
@@ -111,14 +113,17 @@ var refreshOrders = function () {
   API.getOrders().then(function (data) {
     $orderList.empty();
     $completedOrderList.empty();
-    for (var i = 0; i < data.length; i++){
+    for (var i = 0; i < data.length; i++) {
       var order = data[i];
+      var fullname = order.firstname + " " + order.lastname;
       var $name = $("<h5>")
-        .text("Customer Name: " + order.name);
+        .text("Customer Name: " + fullname);
       var $email = $("<h6>")
         .text("Email Address: " + order.email);
       var $phone = $("<h6>")
         .text("Phone Number: " + order.phone);
+      var $pickup = $("<h6>")
+        .text("Requested PickUp: " + order.pickupdate + " @ " + order.pickuptime);
       var $product = $("<h6>")
         .text("Item: " + order.product);
       var $quantity = $("<h6>")
@@ -131,7 +136,7 @@ var refreshOrders = function () {
           class: "list-group-item",
           "data-id": order.id
         })
-        .append($name, $email, $phone, $product, $quantity, $timestamp);
+        .append($name, $email, $phone, $pickup, $product, $quantity, $timestamp);
 
       var $completeBtn = $("<button>")
         .addClass("btn btn-success float-left complete")
@@ -140,16 +145,15 @@ var refreshOrders = function () {
       var $button = $("<button>")
         .addClass("btn btn-danger float-left delete")
         .text("Delete");
-      
-      if (order.completed === false){
+
+      if (order.completed === false) {
         $li.append($completeBtn);
+        $orderList.append($li);
       };
-      if (order.completed === true){
+      if (order.completed === true) {
         $li.append($button);
+        $completedOrderList.append($li);
       }
-      
-      $orderList.append($li);
-      $completedOrderList.append($li);
     };
 
   });
@@ -191,25 +195,31 @@ var handleOrderFormSubmit = function (event) {
   var timestamp = date.toLocaleString();
 
   var order = {
-    name: $orderName.val().trim(),
+    firstname: $orderFirstName.val().trim(),
+    lastname: $orderLastName.val().trim(),
     email: $orderEmail.val().trim(),
     phone: $orderPhone.val().trim(),
+    pickupdate: $orderPickDate.val().trim(),
+    pickuptime: $orderPickTime.val().trim(),
     product: $orderProduct.val().trim(),
     quantity: $orderQuantity.val().trim(),
     timestamp: timestamp
   };
 
-  if ((order.product === "undefined") || !(order.name && order.email && order.product && order.quantity)) {
-    alert("You must at least enter your name, email, product and quantity!");
+  if ((order.product === "undefined") || !(order.firstname && order.lastname && order.email && order.product && order.quantity)) {
+    alert("You must at least enter your name, email, item and quantity!");
     return;
   }
 
   API.saveOrder(order).then(function () {
     refreshOrders();
   });
-  $orderName.val("");
+  $orderFirstName.val("");
+  $orderLastName.val("");
   $orderEmail.val("");
   $orderPhone.val("");
+  $orderPickDate.val("");
+  $orderPickTime.val("");
   $orderProduct.val("undefined");
   $orderQuantity.val("");
 
@@ -227,7 +237,7 @@ var handleOrderFormSubmit = function (event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
+var handleDeleteProductBtn = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
@@ -235,6 +245,13 @@ var handleDeleteBtnClick = function () {
   API.deleteExample(idToDelete).then(function () {
     refreshExamples();
   });
+};
+
+var handleDeleteOrderBtn = function () {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+
   API.deleteOrder(idToDelete).then(function () {
     refreshOrders();
   });
@@ -255,7 +272,5 @@ var handleCompleteBtnClick = function () {
 $submitBtn.on("click", handleFormSubmit);
 $placeOrderBtn.on("click", handleOrderFormSubmit);
 $orderList.on("click", ".complete", handleCompleteBtnClick);
-$completedOrderList.on("click", ".complete", handleCompleteBtnClick);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
-$orderList.on("click", ".delete", handleDeleteBtnClick);
-$completedOrderList.on("click", ".delete", handleDeleteBtnClick);
+$exampleList.on("click", ".delete", handleDeleteProductBtn);
+$completedOrderList.on("click", ".delete", handleDeleteOrderBtn);

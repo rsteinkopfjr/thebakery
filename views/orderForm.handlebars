@@ -6,20 +6,53 @@
                 <br>
                 <h4>Place Your Order Below!</h4>
                 <form class="clearfix mb-4" action="POST">
-                    <div class="form-group">
-                        <label for="order-name">Name:</label>
-                        <input type="text" id="order-name" class="form-control" aria-describedby="order-name"
-                            placeholder="First and Last Name (require)">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="order-first-name">First Name*</label>
+                                <input type="text" id="order-first-name" class="form-control"
+                                    aria-describedby="order-first-name" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="order-last-name"> Last Name*</label>
+                                <input type="text" id="order-last-name" class="form-control"
+                                    aria-describedby="order-last-name" placeholder="Last Name">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="order-email">Email:</label>
-                        <input type="text" id="order-email" class="form-control" aria-describedby="order-email"
-                            placeholder="Email Adress (required)">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="order-email">Email*</label>
+                                <input type="text" id="order-email" class="form-control" aria-describedby="order-email"
+                                    placeholder="Email Adress">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="order-phone">Phone*</label>
+                                <input type="text" id="order-phone" class="form-control" aria-describedby="order-phone"
+                                    placeholder="Phone Number">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="order-phone">Phone:</label>
-                        <input type="text" id="order-phone" class="form-control" aria-describedby="order-phone"
-                            placeholder="Phone Number (required)">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="order-pick-date">Pickup Date*</label>
+                                <input type="text" id="order-pick-date" class="form-control"
+                                    aria-describedby="order-pick-date" placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="order-pick-time">Pickup Time*</label>
+                                <input type="text" id="order-pick-time" class="form-control"
+                                    aria-describedby="order-pick-time" placeholder="Time">
+                            </div>
+                        </div>
                     </div>
                     <div id="product-order-area">
                         <div class="form-group">
