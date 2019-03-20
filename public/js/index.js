@@ -74,7 +74,10 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function () {
   API.getExamples().then(function (data) {
-    var $examples = data.map(function (example) {
+    $exampleList.empty();
+    for (var i = 0; i < data.length; i++) {
+      var example = data[i];
+      console.log(example);
       var $name = $("<h5>")
         .text("Name: " + example.text);
       var $category = $("<h6>")
@@ -96,18 +99,20 @@ var refreshExamples = function () {
         .text("Delete Product");
 
       $li.append($button);
+      $exampleList.append($li);
+      
+    };
 
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
+    // $exampleList.append($li);
   });
 };
 
 var refreshOrders = function () {
   API.getOrders().then(function (data) {
-    var $orders = data.map(function (order) {
+    $orderList.empty();
+    $completedOrderList.empty();
+    for (var i = 0; i < data.length; i++){
+      var order = data[i];
       var $name = $("<h5>")
         .text("Customer Name: " + order.name);
       var $email = $("<h6>")
@@ -135,16 +140,17 @@ var refreshOrders = function () {
       var $button = $("<button>")
         .addClass("btn btn-danger float-left delete")
         .text("Delete");
-
-      $li.append($completeBtn, $button);
-
-      return $orders;
-    });
-
-    $orderList.empty();
-    $orderList.append($orders);
-    $completedOrderList.empty();
-    $completedOrderList.append($orders);
+      
+      if (order.completed === false){
+        $li.append($completeBtn);
+      };
+      if (order.completed === true){
+        $li.append($button);
+      }
+      
+      $orderList.append($li);
+      $completedOrderList.append($li);
+    };
 
   });
 };
@@ -201,12 +207,13 @@ var handleOrderFormSubmit = function (event) {
   API.saveOrder(order).then(function () {
     refreshOrders();
   });
-
   $orderName.val("");
   $orderEmail.val("");
   $orderPhone.val("");
   $orderProduct.val("undefined");
   $orderQuantity.val("");
+
+  alert("Your order has been sent to the baker!");
 };
 
 //Figure out in version 2
