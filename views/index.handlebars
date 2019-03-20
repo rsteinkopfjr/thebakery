@@ -1,300 +1,374 @@
-<!--Vertical Menu-->
-<header class="wrap-vertcal-menu">
-	<!-- Header desktop -->
-	<div id="wrap-header-vertical">
-		<!-- Logo -->
-		<div class="logo col_header">
-			<a href="./index.handlebars"><img alt="main-logo" src="images/TasteLogo.png"></a>
-		</div>
-		<!-- Menu -->
-		<div class="wrap-vertcal-side-menu col_header">
-			<nav class="side-menu">
-				<ul class="main-menu">
-					<li>
-						<a href="/">Home</a>
-						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-						<ul class="sub-menu">
-							<li><a href="index.handlebars">Home</a></li>
+<body class="animsition">
+	
+		<div class="bg-home-boxed"></div>
 
-						</ul>
-					</li>
-					<li>
-						<a href="/gallery">Gallery</a>
-						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-						<ul class="sub-menu">
-							<li><a href="./gallery.handlebars">Gallery</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="/shop-page">SHOP ONLINE!</a>
-						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-						<ul class="sub-menu">
-							<li><a href="/shop-page">Shop Page</a></li>
-							<li><a href="/shopping-cart">Shopping Cart</a></li>
-							<li><a href="/check-out">Check Out</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="/contact-us">Contact</a>
-					</li>
-				</ul>
-				<button class="login-button">Login</button>
-			</nav>
-		</div>
+		<!--Content page-->
+		<div class="wrap-home-boxed ">
 
-	</div>
 
-	<!-- Socials -->
-	<div class="icon-header col_header">
-		<a href="https://www.facebook.com/tasteandseebyaudrey"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-		<a href="https://twitter.com/TasteNSeeAudrey"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-		<a href="https://www.instagram.com/tasteandseebyaudrey/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-	</div>
-</header>
+			<header>
+				<!-- Header desktop -->
+				<div id="wrap_header_boxed" >
+					<!-- Logo -->
+					<div class="home-boxed-logo">
+						<a href="/"><img src="images/TasteLogo.png" alt="logo"></a>
+					</div>
 
-<!--Header Mobile-->
-<div id="wrap_header_mobile">
-	<!-- Logo moblie -->
-	<div class="logo-mobile">
-		<a href="/"><img alt="main-logo" src="images/TasteLogo.png"></a>
-	</div>
-	<!-- Button show menu -->
-	<div class="btn-show-menu">
-		<button class="btn-show-menu-mobile hamburger hamburger--squeeze" type="button">
-			<span class="hamburger-box">
-				<span class="hamburger-inner"></span>
-			</span>
-		</button>
-	</div>
-</div>
+					<!-- Menu -->
+					<div class="main_nav">
+						<nav class="menu col_header">
+							<ul class="main_menu">
+								<li><a href="/">Home</a>
+									<span></span>
+								</li>
+								<li><a href="/shop-page">Shop Online!</a>
+									<ul class="sub_menu">
+										<li><a href="/shop-page">Shop Page</a></li>
+										<li><a href="/shopping-cart">Shopping Cart</a></li>
+										<li><a href="/check-out">Check Out</a></li>
+									</ul>
+								</li>
+								<li><a href="/contact-us">Contact</a>
 
-<!--Menu Mobile-->
-<div class="wrap-side-menu">
-	<nav class="side-menu">
-		<ul class="main-menu">
-			<li>
-				<a href="/">Home</a>
-				<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-				<ul class="sub-menu">
-					<li><a href="/">Homepage</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="/gallery">Gallery</a>
-				<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-				<ul class="sub-menu">
-					<li><a href="/gallery">Gallery</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="/shop-page">Shop!</a>
-				<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-				<ul class="sub-menu">
-					<li><a href="/shop-page">Shop Page</a></li>
-					<li><a href="/shopping-cart">Shopping Cart</a></li>
-					<li><a href="/check-out">Check Out</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="/contact-us">Contact</a>
-			</li>
-		</ul>
-	</nav>
-</div>
-
-<!--Content page-->
-<div class="wrap-content-page">
-	<!-- Slider -->
-	<section id="slider-bakery">
-		<!-- Slider -->
-		<div class="rev_slider_wrapper for-vertical-page">
-			<div id="rev_slider_2" class="rev_slide " style="display: none;">
-				<ul>
-					<!-- Slide 1 -->
-					<li data-transition="fade">
-						<img src="images/Sylvanas Banner-Final-page-001.jpg" alt="Seasonal Flavours"
-							class="rev-slidebg">
-
-						<div id="btn-slide-1" class="tp-caption tp-resizeme btn-slide"
-							data-frames='[{"delay":2000,"speed":1500,"frame":"0","from":"y:bottom;rX:-20deg;rY:-20deg;rZ:0deg;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							data-x="center" data-y="center" data-hoffset="0" data-voffset="['80','80','110','110']"
-							data-width="['910','910','380','380']" data-height="80%" data-color="black">
-							<a href="shop-page.html" class="btn1">Order Online!</a>
-						</div>
-					</li>
-
-					<!-- Slide 2 -->
-					<li data-transition="fade">
-						<img src="images/TasteVintage.png" alt="Fresh Ingredients" class="rev-slidebg">
-						<h3 class="tp-caption tp-resizeme  caption-1"
-							data-frames='[{"delay":500,"split":"chars","splitdelay":0.05,"speed":1500,"frame":"0","from":"x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							data-x="center" data-y="center" data-hoffset="0" data-voffset="['-80','-80','-140','-140']"
-							data-width="['1140','960','720','540']" data-lineheight="['150', '150', '120', '100']"
-							data-fontsize="['110', '110', '100', '90']" data-height="['auto']"></h3>
-
-						<div class="tp-caption tp-resizeme btn-slide caption-2"
-							data-frames='[{"delay":2500,"speed":1000,"frame":"0","from":"z:0;rX:0deg;rY:0;rZ:0;sX:2;sY:2;skX:0;skY:0;opacity:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							data-x="center" data-y="center" data-hoffset="0"  data-fontsize="['50', '50', '45', '40']">Bake the world a better
-							place...</div>
-
-						<div id="btn-slide-2" class="tp-caption tp-resizeme btn-slide"
-							data-frames='[{"delay":3100,"speed":1500,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							data-x="center" data-y="center" data-hoffset="0" data-voffset="['110','110','140','140']"
-							data-width="['910','910','380','380']" data-height="['auto']">
-						</div>
-					</li>
-
-					<!-- Slide 3 -->
-					<li data-transition="fade">
-						<img src="images/Baking.jpeg" alt="Deli Restaurant" class="rev-slidebg">
-						<h3 class="tp-caption tp-resizeme caption-1"
-							data-frames='[{"delay":500,"split":"chars","splitdelay":0.05,"speed":1300,"frame":"0","from":"y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							data-x="center" data-y="center" data-hoffset="0" data-voffset="['-50','-50','-100','-120']"
-							data-width="['1140','960','720','540']" data-lineheight="['150', '150', '120', '100']"
-							data-fontsize="['110', '110', '100', '90']" data-color="white" data-height="['auto']">Always
-							fresh!</h3>
-
-						<div id="btn-slide-3" class="tp-caption tp-resizeme btn-slide"
-							data-frames='[{"delay":2300,"speed":1500,"frame":"0","from":"y:bottom;rZ:90deg;sX:2;sY:2;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-							data-x="center" data-y="center" data-hoffset="0" data-voffset="['80','80','110','110']"
-							data-width="['910','910','380','380']" data-height="['auto']">
-
-							<a href="shop-page.html" class="btn1">Shop Online!</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<!-- End Slider -->
-	</section>
-
-	<!-- Intro -->
-	<div class="wrap-intro">
-		<div class="container">
-			<div class="row">
-				<div class="text-intro col-sm-10 col-md-6">
-					<h3>Meet the Owner</h3>
-					<h2>Our Bakery</h2>
-					<p>
-						"Sometimes the smallest steps in the right direction ends up being the biggest step of your
-						life. Tip toe if you must but take the step."
-					</p>
-					<p>
-						Since beginning my journey in this industry, my dedication to the work and motivation to grow
-						have led me to exceptional projects and experiences.
-						I’m grateful for a profession I’m passionate about, and am proud to share examples of my
-						greatest work. Take a moment to check out my portfolio, and get in touch with any questions.
-					</p>
+								</li>
+							</ul>
+						</nav>
+					</div>
 				</div>
 
-				<div class="pic-intro col-6 wow zoomIn">
-					<div class="pic-intro">
-						<img src="images/owner2.png" alt="picture-about-us">
+				<!-- Header Mobile -->
+				<div id="wrap_header_mobile">
+					<!--Logo moblie___________________________________________________________________-->		
+					<div class="logo-mobile">
+						<a href="index.handlebars"><img alt="logo-deli" src="images/TasteLogo.png"></a>
+					</div>
+					<!--Button show menu___________________________________________________________________-->
+					<div class="btn-show-menu">
+						<button class="btn-show-menu-mobile hamburger hamburger--squeeze" type="button">
+							<span class="hamburger-box">
+								<span class="hamburger-inner"></span>
+							</span>
+						</button>
+					</div>	
+				</div>
+
+				<!-- Menu Mobile -->
+				<div class="wrap-side-menu" >
+					<nav class="side-menu">
+						<ul class="main-menu">
+							<li>
+								<a href="index.handlebars">Home</a>
+								<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+							</li>
+							</li>
+							<li>
+								<a href="/shop-page">Shop Online!</a>
+								<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+								<ul class="sub-menu">
+									<li><a href="/shop-page">Shop Page</a></li>
+									<li><a href="shopping-cart.handlebars">Shopping Cart</a></li>
+									<li><a href="/check-out">Check Out</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="/contact-us">Contact</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+
+		
+			<!-- Slider -->
+			<section class="slide-home-boxed" id="slider-deli">
+				<!-- Slider -->
+				<div class="rev_slider_wrapper fullwidthbanner-container for-vertical-page">
+					<div id="rev_slider_3" class="rev_slide fullwidthabanner" style="display: none;">
+						<ul>
+							<!-- Slide 1 -->
+							<li data-transition="fade">
+								<img src="images/Sylvana's.jpg" alt="Seasonal Flavours" class="rev-slidebg">
+								<h3 class="tp-caption tp-resizeme caption-1" 
+								data-frames='[{"delay":500,"speed":1800,"frame":"0","from":"x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							    data-x="center" 
+							    data-y="middle" 
+							    data-hoffset="0" 
+							    data-voffset="['-55','-55','-100','-120']" 
+							    data-width="['1140','960','720','540']"
+							    data-lineheight="['150', '150', '120', '100']"
+							    data-fontsize="['80', '80', '80', '80']"
+							    data-height="['auto']">Welcome to Audrey's Bakery</h3>
+								
+								<div id="btn-slide-1" class="tp-caption tp-resizeme btn-slide"
+								data-frames='[{"delay":2000,"speed":1500,"frame":"0","from":"y:bottom;rX:-20deg;rY:-20deg;rZ:0deg;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							    data-x="center" 
+							    data-y="center" 
+							    data-hoffset="0" 
+							    data-voffset="['55','55','110','110']" 
+							    data-width="['910','910','380','380']"
+							    data-height="['auto']">
+										<a href="/shop-page" class="btn1">Order Online!</a>
+								</div>
+							</li>
+
+							<!-- Slide 3 -->
+							<li data-transition="fade">
+								<img src="images/ftonpage.jpeg" alt="Deli Restaurant" class="rev-slidebg">
+								<h3 class="tp-caption tp-resizeme caption-1" 
+								data-frames='[{"delay":500,"split":"chars","splitdelay":0.05,"speed":1300,"frame":"0","from":"y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							    data-x="center" 
+							    data-y="center" 
+							    data-hoffset="0" 
+							    data-voffset="['-55','-55','-100','-120']"
+							    data-width="['1140','960','720','540']"
+							    data-lineheight="['150', '150', '120', '100']"
+							    data-fontsize="['80', '80', '80', '80']"
+							    data-height="['auto']">Bake the World a Better Place...</h3>
+								
+								<div id="btn-slide-3" class="tp-caption tp-resizeme btn-slide"
+								data-frames='[{"delay":2300,"speed":1500,"frame":"0","from":"y:bottom;rZ:90deg;sX:2;sY:2;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+							    data-x="center" 
+							    data-y="center" 
+							    data-hoffset="0" 
+							    data-voffset="['55','55','110','110']"
+							    data-width="['910','910','380','380']"
+							    data-height="['auto']">
+										<a href="/shop-page" class="btn1">Order Online!</a>
+								</div>
+							</li>
+						</ul>				
+					</div>
+				</div>
+				<!-- End Slider -->
+			</section>
+
+
+			<!-- Our Menu -->
+			<section class="our-menu content-menu-02">
+				<div class="container">
+					<!-- title our menu -->
+					<div class="wrap-title-our-menu row">
+						<div class="col-12 title-our-menu">
+							<h6>try &amp; discover</h6>
+							<h2>Our Gallery</h2>
+						</div>
+					</div>
+					
+		<section class="content-menu-01">
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-content-menu-01 col-sm-7 col-md-3">
+					<div class="row">
+						<div class="col-12 wow fadeInLeft">
+							<a href="#" class="hover-img">
+								<img src="images/pink.png" alt="img-menu">
+							</a>
+						</div>
+						<div class="col-12 wow fadeInLeft">
+							<a href="#" class="hover-img">
+								<img src="images/flower.png" alt="img-menu">
+							</a>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-content-menu-02 col-sm-7 col-md-5">
+					<div class="row">
+						<div class="col-12 wow fadeInDown">
+							<a href="#" class="hover-img">
+								<img src="images/monster.png" alt="img-menu">
+							</a>
+						</div>
+						<div class="col-12 wow fadeInUp">
+							<a href="#" class="hover-img">
+								<img src="images/catering2.png" alt="img-menu">
+							</a>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-content-menu-01 col-sm-7 col-md-3 wow fadeInRight">
+					<div class="row">
+						<div class="col-12 wow fadeInDown">
+					<a href="#" class="hover-img">
+						<img src="images/Image5.png" alt="img-menu">
+					</a>
+					</div>
+					<div class="col-12 wow fadeInUp">
+							<a href="#" class="hover-img">
+								<img src="images/blue.png" alt="img-menu">
+							</a>
+					</div>
+				</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section class="content-menu-02">
+		<div class="container">
+			<div class="row">
+				<div class="col-content-menu-02 col-sm-7 col-md-3">
+					<div class="row">
+						<div class="col-12 wow fadeInLeft">
+							<a href="#" class="hover-img">
+								<img src="images/unicorn.png" alt="img-menu">
+
+							</a>
+						</div>
+						<div class="col-12 wow fadeInLeft">
+							<a href="#" class="hover-img">
+								<img src="images/happybirthday.png" alt="img-menu">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-content-menu-02 col-sm-7 col-md-5">
+					<div class="row">
+						<div class="col-12 wow fadeInDown">
+							<a href="#" class="hover-img">
+								<img src="images/topright.png" alt="img-menu">
+							</a>
+						</div>
+						<div class="col-12 wow fadeInUp">
+							<a href="#" class="hover-img">
+							
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-content-menu-02 col-sm-7 col-md-4 wow fadeInRight">
+					<a href="#" class="hover-img">
+						<img src="images/Image10.png" alt="img-menu">
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+			
+
+			<!-- about us -->
+			<div class="wrap-intro">
+				<div class="container">
+					<div class="row">
+						<div class="text-intro col-sm-10 col-md-6">
+							<h3>Meet the Owner</h3>
+							<h2>Our Bakery</h2>
+							<p>
+								Since beginning my journey in this industry, my dedication to the work and motivation to grow have led me to exceptional projects and experiences. I’m grateful for a profession I’m passionate about, and am proud to share examples of my greatest work. Take a moment to check out my portfolio, and get in touch with any questions.
+							</p>
+							<p>
+								Our company showcases a tablescape of sweets that will wake up your tastebuds and reminisce you back to your roots. You will also start seeing us in #njmarkets where you can grab a #taste of our delicious goodies!
+
+							</p>
+							<p>
+								"Sometimes the smallest steps in the right direction ends up being the biggest step of your life. Tip toe if you must but take the step."
+							</p>
+						</div>
+
+						<div class="wrap-pic-intro col-sm-10 col-md-6">
+							<div class="row">
+								<div class="col-10 wow zoomIn">
+									<div class="pic-intro">
+										<img src="images/owner1.png" alt="picture-about-us">
+									</div>
+								</div>
+								<div class="col-9 wow zoomIn">
+									<div class="pic-intro1">
+										<img src="images/owner2.png" alt="picture-about-us">
+									</div>
+								</div>
+
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
-		</div>
+			<!-- Footer -->
+			<footer class="footer-home-boxed">
+				<div class="container">
+					<div class="content-footer row">
+						<div class="column-footer col-lg-5 col-md-8 col-sm-7">
+							<h3>Contact information</h3>
+							<ul>
+								<li>Middlesex County, NJ</li>
+								<li>FOR BOOKING: 732-668-6020</li>
+								<li id="follow-us">FOLLOW US ON: 
+									<a href="https://www.facebook.com/tasteandseebyaudrey"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+									<a href="https://twitter.com/TasteNSeeAudrey"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+									<a href="https://www.instagram.com/tasteandseebyaudrey/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+								</li>
+							</ul>
+						</div>
 
-	</div>
-</div>
-</div>
+						<div class="column-footer col-lg-4 col-md-5 col-sm-7">
+							<h3>Baking Hours</h3>
+							<ul id="restaurant-hours">
+								<li>
+									<span class="span-left">Weekdays:</span>
+								</li>
+								<li>
+									<span class="span-left">Monday - Friday</span>
+									<span class="span-right">11:30AM - 2:00PM</span>
+								</li>
+								<li>
+									<span class="span-left">Weekend:</span>
+								</li>
+								<li>
+									<span class="span-left">Saturday</span>
+									<span class="span-right">11:30AM - 2:00</span>
+								</li>
+								<li>
+									<span class="span-left">Sunday</span>
+									<span class="span-right">Closed</span>
+								</li>
+							</ul>
+							<div class="line-divide first-line"></div>
+						</div>
 
-
-
-
-
-<!-- Event -->
-<section id="event">
-	<div class="container">
-		<!-- title event -->
-		<div class="wrap-title-event row">
-			<div id="title-event" class="col-12">
-				<h6>Meet us at our upcoming</h6>
-				<h2>Pop-up Event</h2>
-			</div>
-
-			<div class="content-event col-sm-10 col-md-8 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-				<div class="img-event">
-					<a href="blog-detail.html"><img alt="picture-event" src="images/img-event-05.jpg"></a>
+						<div class="column-footer col-lg-3 col-md-3 col-sm-7">
+							<h3>Useful links</h3>
+							<ul id="useful-links">
+								<li>
+									<span class="span-left">
+										<a href="/">Home</a>
+									</span> 
+									<span class="span-right">
+										<a href="/shop-page">Order Online!</a>
+									</span>
+								</li>
+								<li>
+									<span class="span-right">
+										<a href="contact-us">Contact us</a>
+									</span>
+								</li>
+							</ul>
+							<div class="line-divide second-line"></div>
+						</div>
+					</div>
 				</div>
-				<h3><a class="hover-link-color" href="blog-detail.html">Deli Successful Catering Event</a></h3>
-				<p>
-				    Vestibulum viverra accumsan ipsum nec luctus. Integer tortor dolor,
-					suscipit sed justo et, interdum dignissim arcu.
-				</p>
-			</div>
-
-			<div class="content-event col-sm-10 col-md-8 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-				<div class="img-event">
-					<a href="blog-detail.html"><img alt="picture-event" src="images/img-event-06.jpg"></a>
+				<div class="wrap-bottom-footer">
+					<div class="container">
+						<div class="bottom-footer row justify-content-between">
+							<div class="col-12 col-sm-7">© 2019 Audrey. All rights reserved.</div>
+						</div>
+					</div>
 				</div>
-				<h3><a class="hover-link-color" href="blog-detail.html">Deli Summer Auscoutics</a></h3>
-				<p>
-					Duis lorem velit, sodales eget posuere in, commodo dictum felis. Aenean leo neque, pharetra vitae
-					dui et, pretium venenatis metus.
-				</p>
-			</div>
+			</footer>
 		</div>
+	
+		
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
 	</div>
-</section>
-
-<!-- Footer -->
-<footer>
-	<div class="container">
-		<div class="content-footer for-vertical-page row">
-			<div class="column-footer col-lg-5 col-md-9 col-sm-7">
-				<h3>Contact information</h3>
-				<ul>
-					<li>ADDRESS: 100 Tenth Avenue, New York City, NY 1001</li>
-					<li>FOR BOOKING: (044) 359 0173</li>
-				</ul>
-			</div>
-
-			<div class="column-footer col-lg-7 col-md-9 col-sm-7">
-				<h3>Restaurant hours</h3>
-				<div class="row">
-					<ul class="restaurant-hours-left col-lg-6 col-md-6 col-sm-10">
-						<li>
-							<span class="column-left">LUNCH:</span>
-						</li>
-						<li>
-							<span class="column-left">Monday - Friday: 11:30AM - 2:00PM</span>
-						</li>
-						<li>
-							<span class="column-left">Saturday - Sunday: 11:00AM - 1:00PM</span>
-						</li>
-					</ul>
-
-					<ul class="restaurant-hours-right col-lg-6 col-md-6 col-sm-10">
-						<li>
-							<span class="column-right">DINNER:</span>
-						</li>
-						<li>
-							<span class="column-right">Monday - Friday: 5:30PM - 11:00PM</span>
-						</li>
-						<li>
-							<span class="column-right">Saturday - Sunday: 4:30PM - 10:00PM</span>
-						</li>
-					</ul>
-				</div>
-
-				<div class="line-divide first-line"></div>
-			</div>
-		</div>
-	</div>
-	<div class="wrap-bottom-footer">
-		<div class="container">
-			<div class="bottom-footer row justify-content-between">
-				<div class="col-12 col-sm-7">© 2019 TeamX. All rights reserved.</div>
-			</div>
-		</div>
-	</div>
-</footer>
-</div>
-
-<!-- Back to top -->
-<div class="btn-back-to-top" id="myBtn">
-	<span class="symbol-btn-back-to-top">
-		<i class="fa fa-angle-double-up" aria-hidden="true"></i>
-	</span>
-</div>
