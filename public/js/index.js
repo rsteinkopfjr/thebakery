@@ -14,6 +14,8 @@ var $orderQuantity = $("#order-quantity");
 var $placeOrderBtn = $("#placeOrder");
 var $addProductBtn = $("#addProduct");
 var $orderList = $("#order-list");
+var $completedOrderList = $("#completed-order-list");
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -49,6 +51,12 @@ var API = {
       type: "GET"
     });
   },
+  completeOrder: function (id) {
+    return $.ajax({
+      url: "api/orders/update/" + id,
+      type: "PUT"
+    });
+  },
   deleteExample: function (id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -60,19 +68,16 @@ var API = {
       url: "api/orders/" + id,
       type: "DELETE"
     });
-  },
-  completeOrder: function (id) {
-    return $.ajax({
-      url: "api/orders/update/" + id,
-      type: "PUT"
-    });
   }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function () {
   API.getExamples().then(function (data) {
-    var $examples = data.map(function (example) {
+    $exampleList.empty();
+    for (var i = 0; i < data.length; i++) {
+      var example = data[i];
+      console.log(example);
       var $name = $("<h5>")
         .text("Name: " + example.text);
       var $category = $("<h6>")
@@ -94,26 +99,28 @@ var refreshExamples = function () {
         .text("Delete Product");
 
       $li.append($button);
+      $exampleList.append($li);
+      
+    };
 
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
+    // $exampleList.append($li);
   });
 };
 
 var refreshOrders = function () {
   API.getOrders().then(function (data) {
-    var $orders = data.map(function (order) {
+    $orderList.empty();
+    $completedOrderList.empty();
+    for (var i = 0; i < data.length; i++){
+      var order = data[i];
       var $name = $("<h5>")
-        .text("Name: " + order.name);
+        .text("Customer Name: " + order.name);
       var $email = $("<h6>")
-        .text("Email: " + order.email);
+        .text("Email Address: " + order.email);
       var $phone = $("<h6>")
-        .text("Phone: " + order.phone);
+        .text("Phone Number: " + order.phone);
       var $product = $("<h6>")
-        .text("Product: " + order.product);
+        .text("Item: " + order.product);
       var $quantity = $("<h6>")
         .text("Quantity: " + order.quantity);
       var $timestamp = $("<h6>")
@@ -129,17 +136,22 @@ var refreshOrders = function () {
       var $completeBtn = $("<button>")
         .addClass("btn btn-success float-left complete")
         .text("Completed");
+
       var $button = $("<button>")
         .addClass("btn btn-danger float-left delete")
         .text("Delete");
+      
+      if (order.completed === false){
+        $li.append($completeBtn);
+      };
+      if (order.completed === true){
+        $li.append($button);
+      }
+      
+      $orderList.append($li);
+      $completedOrderList.append($li);
+    };
 
-      $li.append($completeBtn, $button);
-
-      return $li;
-    });
-
-    $orderList.empty();
-    $orderList.append($orders);
   });
 };
 
@@ -187,20 +199,21 @@ var handleOrderFormSubmit = function (event) {
     timestamp: timestamp
   };
 
-  if (!(order.email && order.quantity)) {
-    alert("You must at least enter an email and quantity!");
+  if ((order.product === "undefined") || !(order.name && order.email && order.product && order.quantity)) {
+    alert("You must at least enter your name, email, product and quantity!");
     return;
   }
 
   API.saveOrder(order).then(function () {
     refreshOrders();
   });
-
   $orderName.val("");
   $orderEmail.val("");
   $orderPhone.val("");
   $orderProduct.val("undefined");
   $orderQuantity.val("");
+
+  alert("Your order has been sent to the baker!");
 };
 
 //Figure out in version 2
@@ -215,7 +228,6 @@ var handleOrderFormSubmit = function (event) {
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function () {
-  console.log(this);
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
@@ -233,19 +245,17 @@ var handleCompleteBtnClick = function () {
   var idToUpdate = $(this)
     .parent()
     .attr("data-id");
-  console.log(idToUpdate);
 
-  API.completeOrder(idToUpdate).then(function (data) {
-    var $completed = data.update(function (order) {
-      console.log(order);
-    });
+  API.completeOrder(idToUpdate).then(function () {
     refreshOrders();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
-$orderList.on("click", ".delete", handleDeleteBtnClick);
 $placeOrderBtn.on("click", handleOrderFormSubmit);
 $orderList.on("click", ".complete", handleCompleteBtnClick);
+$completedOrderList.on("click", ".complete", handleCompleteBtnClick);
+$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$orderList.on("click", ".delete", handleDeleteBtnClick);
+$completedOrderList.on("click", ".delete", handleDeleteBtnClick);
