@@ -3,19 +3,19 @@ var db = require("../models");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Product.findAll({}).then(function (dbProducts) {
       res.render("index", {
         msg: "Bakery Website",
-        examples: dbExamples
+        products: dbProducts
       });
     });
   });
   // Load products page
   app.get("/products", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Product.findAll({}).then(function (dbProducts) {
       res.render("products", {
         msgProd: "Bakery Dashboard",
-        examples: dbExamples
+        products: dbProducts
       });
     });
   });
@@ -30,21 +30,21 @@ module.exports = function (app) {
   });
   // Load order form page
   app.get("/orderform", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples, dbOrders) {
+    db.Product.findAll({}).then(function (dbProducts, dbOrders) {
       res.render("orderForm", {
-        examples: dbExamples,
+        products: dbProducts,
         orders: dbOrders
       });
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (
-      dbExample
+  app.get("/product/:id", function (req, res) {
+    db.Product.findOne({ where: { id: req.params.id } }).then(function (
+      dbProducts
     ) {
-      res.render("example", {
-        example: dbExample
+      res.render("product", {
+        product: dbProducts
       });
     });
   });
@@ -52,10 +52,10 @@ module.exports = function (app) {
   // Load order page and pass in an example by id
   app.get("/order/:id", function (req, res) {
     db.Order.findOne({ where: { id: req.params.id } }).then(function (
-      dbOrder
+      dbOrders
     ) {
       res.render("order", {
-        order: dbOrder
+        order: dbOrders
       });
     });
   });

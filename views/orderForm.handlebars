@@ -70,7 +70,7 @@
                             <label for="order-product">Choose a Product</label>
                             <select id="order-product" class="form-control" aria-describedby="order-product">
                                 <option value="undefined">Available Products</option>
-                                {{#each examples}}
+                                {{#each products}}
                                 <option value="{{this.text}}">{{this.text}} - ${{this.price}} each</option>
                                 {{/each}}
                             </select>

@@ -1,11 +1,11 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleCategory = $("#example-category");
-var $exampleDescription = $("#example-description");
-var $examplePrice = $("#example-price");
+var $productText = $("#product-text");
+var $productCategory = $("#product-category");
+var $productDescription = $("#product-description");
+var $productPrice = $("#product-price");
 var $submitBtn = $("#submit");
 var $completeBtn = $("#completed");
-var $exampleList = $("#example-list");
+var $productList = $("#product-list");
 var $orderFirstName = $("#order-first-name");
 var $orderLastName = $("#order-last-name");
 var $orderEmail = $("#order-email");
@@ -23,14 +23,14 @@ var $completedOrderList = $("#completed-order-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function (example) {
+  saveProduct: function (product) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/products",
+      data: JSON.stringify(product)
     });
   },
   saveOrder: function (order) {
@@ -43,9 +43,9 @@ var API = {
       data: JSON.stringify(order)
     });
   },
-  getExamples: function () {
+  getProducts: function () {
     return $.ajax({
-      url: "api/examples",
+      url: "api/products",
       type: "GET"
     });
   },
@@ -61,9 +61,9 @@ var API = {
       type: "PUT"
     });
   },
-  deleteExample: function (id) {
+  deleteProduct: function (id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/products/" + id,
       type: "DELETE"
     });
   },
@@ -76,24 +76,24 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function () {
-  API.getExamples().then(function (data) {
-    $exampleList.empty();
+var refreshProducts = function () {
+  API.getProducts().then(function (data) {
+    $productList.empty();
     for (var i = 0; i < data.length; i++) {
-      var example = data[i];
+      var product = data[i];
       var $name = $("<h5>")
-        .text("Name: " + example.text);
+        .text("Name: " + product.text);
       var $category = $("<h6>")
-        .text("Category: " + example.category);
+        .text("Category: " + product.category);
       var $description = $("<h6>")
-        .text("Description: " + example.description);
+        .text("Description: " + product.description);
       var $price = $("<h6>")
-        .text("Price: " + example.price);
+        .text("Price: " + product.price);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": product.id
         })
         .append($name, $category, $description, $price);
 
@@ -102,11 +102,9 @@ var refreshExamples = function () {
         .text("Delete Product");
 
       $li.append($button);
-      $exampleList.prepend($li);
+      $productList.prepend($li);
 
     };
-
-    // $exampleList.append($li);
   });
 };
 
@@ -167,26 +165,26 @@ var refreshOrders = function () {
 var handleFormSubmit = function (event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    category: $exampleCategory.val().trim(),
-    description: $exampleDescription.val().trim(),
-    price: $examplePrice.val().trim()
+  var product = {
+    text: $productText.val().trim(),
+    category: $productCategory.val().trim(),
+    description: $productDescription.val().trim(),
+    price: $productPrice.val().trim()
   };
 
-  if (!(example.text && example.price)) {
+  if (!(product.text && product.price)) {
     alert("You must at least enter a name and price!");
     return;
   }
 
-  API.saveExample(example).then(function () {
-    refreshExamples();
+  API.saveProduct(product).then(function () {
+    refreshProducts();
   });
 
-  $exampleText.val("");
-  $exampleCategory.val("");
-  $exampleDescription.val("");
-  $examplePrice.val("");
+  $productText.val("");
+  $productCategory.val("");
+  $productDescription.val("");
+  $productPrice.val("");
 };
 
 
@@ -223,7 +221,7 @@ var handleOrderFormSubmit = function (event) {
   $orderEmail.val("");
   $orderPhone.val("");
   $orderPickDate.val("");
-  $orderPickTime.val("");
+  $orderPickTime.val("undefined");
   $orderProduct.val("undefined");
   $orderQuantity.val("");
   $orderNote.val("");
@@ -247,8 +245,8 @@ var handleDeleteProductBtn = function () {
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function () {
-    refreshExamples();
+  API.deleteProduct(idToDelete).then(function () {
+    refreshProducts();
   });
 };
 
@@ -277,5 +275,5 @@ var handleCompleteBtnClick = function () {
 $submitBtn.on("click", handleFormSubmit);
 $placeOrderBtn.on("click", handleOrderFormSubmit);
 $orderList.on("click", ".complete", handleCompleteBtnClick);
-$exampleList.on("click", ".delete", handleDeleteProductBtn);
+$productList.on("click", ".delete", handleDeleteProductBtn);
 $completedOrderList.on("click", ".delete", handleDeleteOrderBtn);
