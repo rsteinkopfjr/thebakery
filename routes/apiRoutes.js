@@ -57,12 +57,8 @@ module.exports = function(app) {
   });
 
   app.put("/api/orders/update/:id", function(req, res) {
-    db.Order.update({ completed: true }, { where: { id: req.params.id } })
-    
-      .then(
-        function(dbOrders) {
-          res.json(dbOrders);
-        });
-
+    db.Order.update({ completed: true }, { where: { id: req.params.id } }).then(
+      function(dbOrders) {res.json(dbOrders);
+      });
   });
 };
