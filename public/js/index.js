@@ -229,14 +229,6 @@ var handleOrderFormSubmit = function (event) {
   alert("Your order has been sent to the baker!");
 };
 
-//Figure out in version 2
-// var handleAddProductForm = function (event) {
-//   event.preventDefault();
-//   console.log(this);
-//   var formItem = document.getElementById("product-order-area");
-//   var cln = formItem.cloneNode(true);
-//   document.getElementById("product-order-area-two").append(cln);
-// };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list

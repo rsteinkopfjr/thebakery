@@ -10,10 +10,31 @@ module.exports = function (app) {
       });
     });
   });
+  // Load dashboard page
+  app.get("/dashboard", function (req, res) {
+    db.Product.findAll({}).then(function (dbProducts) {
+      res.render("dashboard", {
+        title: "Bakery Dashboard",
+        msgDash: "Bakery Dashboard",
+        products: dbProducts
+      });
+    });
+  });
+  // Load inquires page
+  app.get("/inquiries", function (req, res) {
+    db.Inquiry.findAll({}).then(function (dbInquiries) {
+      res.render("inquiries", {
+        title: "Manage - Inquiries",
+        msgInq: "Bakery Dashboard",
+        inquiries: dbInquiries
+      });
+    });
+  });
   // Load products page
   app.get("/products", function (req, res) {
     db.Product.findAll({}).then(function (dbProducts) {
       res.render("products", {
+        title: "Manage - Products",
         msgProd: "Bakery Dashboard",
         products: dbProducts
       });
@@ -23,6 +44,7 @@ module.exports = function (app) {
   app.get("/orders", function (req, res) {
     db.Order.findAll({}).then(function (dbOrders) {
       res.render("orders", {
+        title: "Manage - Orders",
         msgOrd: "Bakery Dashboard",
         orders: dbOrders
       });
@@ -32,6 +54,7 @@ module.exports = function (app) {
   app.get("/orderform", function (req, res) {
     db.Product.findAll({}).then(function (dbProducts, dbOrders) {
       res.render("orderForm", {
+        title: "Order Form",
         products: dbProducts,
         orders: dbOrders
       });
