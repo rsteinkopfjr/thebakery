@@ -90,22 +90,23 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/product/:id", function(req, res) {
-    db.Product.findOne({ where: { id: req.params.id } })
-    .then(function(dbProducts
-    ) {
-      res.render("product", {
-        product: dbProducts
-      });
+    db.Product.findOne({ where: { id: req.params.id } }
+    )
+      .then(function(dbProducts
+      ) {
+        res.render("product", {
+          product: dbProducts
+        });
     });
   });
 
   // Load order page and pass in an example by id
   app.get("/order/:id", function(req, res) {
     db.Order.findOne({ where: { id: req.params.id } })
-    .then(function(dbOrders) {
-      res.render("order", {
-        order: dbOrders
-      });
+      .then(function(dbOrders) {
+        res.render("order", {
+          order: dbOrders
+        });
     });
   });
 

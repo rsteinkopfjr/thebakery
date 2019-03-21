@@ -44,7 +44,8 @@ module.exports = function(app) {
   app.delete("/api/products/:id", function(req, res) {
     db.Product.destroy({ where: { id: req.params.id } }).then(function(
       dbProducts
-      ) {res.json(dbProducts);
+    ) {
+    res.json(dbProducts);
     });
   });
 
@@ -60,7 +61,8 @@ module.exports = function(app) {
     db.Order.update({
       completed: true
     },
-    { where: { id: req.params.id} }).then(function(dbOrders) {
+    { where: { id: req.params.id} }
+    ).then(function(dbOrders) {
       res.json(dbOrders);
     });
   });
