@@ -10,11 +10,10 @@ module.exports = function(sequelize, DataTypes) {
     quantity: DataTypes.INTEGER,
     timestamp: DataTypes.STRING,
     completed: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
+      type:DataTypes.BOOLEAN,
+      defaultValue:false
     },
     note: DataTypes.TEXT
   });
   return Order;
 };
-  
