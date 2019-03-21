@@ -14,6 +14,7 @@ var $orderPickDate = $("#order-pick-date");
 var $orderPickTime = $("#order-pick-time");
 var $orderProduct = $("#order-product");
 var $orderQuantity = $("#order-quantity");
+var $orderNote = $("#order-note");
 var $placeOrderBtn = $("#placeOrder");
 var $addProductBtn = $("#addProduct");
 var $orderList = $("#order-list");
@@ -101,7 +102,7 @@ var refreshExamples = function () {
         .text("Delete Product");
 
       $li.append($button);
-      $exampleList.append($li);
+      $exampleList.prepend($li);
 
     };
 
@@ -130,13 +131,15 @@ var refreshOrders = function () {
         .text("Quantity: " + order.quantity);
       var $timestamp = $("<h6>")
         .text("Time Created: " + order.timestamp);
+      var $orderNote = $("<h6>")
+        .text("Notes: " + order.note);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
           "data-id": order.id
         })
-        .append($name, $email, $phone, $pickup, $product, $quantity, $timestamp);
+        .append($name, $email, $phone, $pickup, $product, $quantity, $timestamp, $orderNote);
 
       var $completeBtn = $("<button>")
         .addClass("btn btn-success float-left complete")
@@ -203,7 +206,8 @@ var handleOrderFormSubmit = function (event) {
     pickuptime: $orderPickTime.val().trim(),
     product: $orderProduct.val().trim(),
     quantity: $orderQuantity.val().trim(),
-    timestamp: timestamp
+    timestamp: timestamp,
+    note: $orderNote.val().trim()
   };
 
   if ((order.product === "undefined") || !(order.firstname && order.lastname && order.email && order.product && order.quantity)) {
@@ -222,6 +226,7 @@ var handleOrderFormSubmit = function (event) {
   $orderPickTime.val("");
   $orderProduct.val("undefined");
   $orderQuantity.val("");
+  $orderNote.val("");
 
   alert("Your order has been sent to the baker!");
 };

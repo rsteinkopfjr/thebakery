@@ -12,7 +12,8 @@ module.exports = function(sequelize, DataTypes) {
         completed: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
-        }
+        },
+        note: DataTypes.TEXT
     });
     return Order;
   };

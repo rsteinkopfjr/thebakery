@@ -2,9 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col-8 offset-2">
-                <h3>Order Form</h3>
+                <div class="container" style="text-align: center" id="logo">
+                    <img src="/images/TasteLogo.png">
+                    <br>
+                    <h3>ORDER NOW!</h3>
+                </div>
                 <br>
-                <h4>Place Your Order Below!</h4>
                 <form class="clearfix mb-4" action="POST">
                     <div class="row">
                         <div class="col-6">
@@ -49,8 +52,16 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="order-pick-time">Pickup Time*</label>
-                                <input type="text" id="order-pick-time" class="form-control"
-                                    aria-describedby="order-pick-time" placeholder="Time">
+                                <select id="order-pick-time" class="form-control" aria-describedby="order-pick-time">
+                                    <option value="undefined">Time Slots</option>
+                                    <option value="10:00AM">10:00 AM</option>
+                                    <option value="11:00AM">11:00 AM</option>
+                                    <option value="12:00PM">12:00 PM</option>
+                                    <option value="1:00PM">1:00 PM</option>
+                                    <option value="2:00PM">2:00 PM</option>
+                                    <option value="3:00PM">3:00 PM</option>
+                                    <option value="4:00PM">4:00 PM</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -70,10 +81,14 @@
                                 aria-describedby="order-quantity" placeholder="Enter Amount">
                         </div>
                     </div>
-                    {{!-- <div id="product-order-area-two"></div>
-                    <div>
-                        <button id="addProduct" class="btn btn-secondary btn-sm float-right">+</button>
-                    </div> --}}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="order-note">Notes</label>
+                                <textarea class="form-control" id="order-note" aria-describedby="order-note" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
                     <br><br>
                     <div>
                         <button id="placeOrder" class="btn btn-success float-right">Place Order</button>
