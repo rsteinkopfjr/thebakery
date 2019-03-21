@@ -95,7 +95,7 @@ module.exports = function(app) {
       dbProducts
     ) {
       res.render("product", {
-      product: dbProducts
+        product: dbProducts
       });
     });
   });
@@ -106,8 +106,8 @@ module.exports = function(app) {
       .then(function(dbOrders) {
         res.render("order", {
           order: dbOrders
+        });
       });
-    });
   });
 
   // Render 404 page for any unmatched routes
