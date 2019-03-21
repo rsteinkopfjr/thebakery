@@ -91,13 +91,13 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   app.get("/product/:id", function(req, res) {
     db.Product.findOne({ where: { id: req.params.id } }
-    )
-      .then(function(dbProducts
+    ).then(function(
+      dbProducts
       ) {
         res.render("product", {
-          product: dbProducts
+        product: dbProducts
         });
-    });
+      });
   });
 
   // Load order page and pass in an example by id
@@ -105,9 +105,9 @@ module.exports = function(app) {
     db.Order.findOne({ where: { id: req.params.id } })
       .then(function(dbOrders) {
         res.render("order", {
-          order: dbOrders
+        order: dbOrders
         });
-    });
+      });
   });
 
   // Render 404 page for any unmatched routes
