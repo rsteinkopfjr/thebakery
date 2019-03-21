@@ -13,6 +13,12 @@ module.exports = function (app) {
       res.json(dbOrders);
     });
   });
+  // Get all inquiries
+  app.get("/api/inquiries", function (req, res) {
+    db.Inquiry.findAll({}).then(function (dbInquiries) {
+      res.json(dbInquiries);
+    });
+  });
 
   // Create a new example
   app.post("/api/products", function (req, res) {
@@ -25,6 +31,12 @@ module.exports = function (app) {
   app.post("/api/orders", function (req, res) {
     db.Order.create(req.body).then(function (dbOrders) {
       res.json(dbOrders);
+    });
+  });
+  // Create a new inquiry
+  app.post("/api/inquiries", function (req, res) {
+    db.Inquiry.create(req.body).then(function (dbInquiries) {
+      res.json(dbInquiries);
     });
   });
 

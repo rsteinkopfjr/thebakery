@@ -1,348 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-<style>
-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
-.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-.w3-half img:hover{opacity:1}
-
-
-.w3-sidebar{
-    background-color:  #de6fa1;
-}
-
-
-/* Carousel */
-/* .mySlides {display: none}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-/* .slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}  */
-
-/* Next & previous buttons */
-/* .prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-} */
-
-/* Position the "next button" to the right */
-/* .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-} */
-
-/* On hover, add a black background color with a little bit see-through */
-/* .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-} */
-
-/* Caption text */
-/* .text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-} */
-
-/* Number text (1/3 etc) */
-/* .numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-} */
-
-/* The dots/bullets/indicators */
-/* .dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-} */
-
-/* .active, .dot:hover {
-  background-color: #717171;
-} */
-
-/* Fading animation */
-/* .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-} */
-
-/* @-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-} */
-
-/* On smaller screens, decrease text size */
-/* @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-} */
-
-/* featured */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-.featured{
-    width: 100px;
-    height: 100px;
-}
-.yellow{
-justify-content: center;
-margin: 20px 0px 0px 97px;
-
-}
-
-
-/* parallax */
-.parallax-slide {
-  height: 50vh;
-}
-.content-slide {
-  height: 100vh;
-  background: #fff;
-  text-align: center;
-}
-h1 {
-  padding-top: 10%;
-}
-#parallax1 {
-  background: url('https://images.unsplash.com/photo-1464347744102-11db6282f854?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1187&q=80') no-repeat center;
-  background-attachment: fixed;
-  height: 500px; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-}
-#parallax2 {
-  background: url('https://images.unsplash.com/photo-1426869884541-df7117556757?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80') no-repeat center;
-  background-attachment: fixed;
-  height: 500px; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-}
-
-
-</style>
-<body>
-
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar  w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
-  <div class="w3-container">
-    <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
+<div class="home">
+  {{!-- Desktop Nav Bar --}}
+  <div class="sidenav">
+    <nav class="nav flex-column">
+      <a class="nav-link" href="/">
+        <img src="/images/TasteLogo.png" width="200" height="100" alt="cupcake"></a>
+      <br>
+      <a class="nav-link" href="orderform" target="_blank">ORDER NOW</a>
+      <br>
+      <a class="nav-link" href="about">About</a>
+      <a class="nav-link" href="menu">Menu</a>
+      <a class="nav-link" href="contact">Contact</a>
+      <br>
+      <br>
+      <a>FOLLOW US</a>
+    </nav>
   </div>
-  <div class="w3-bar-block">
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
-    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Gifts</a> 
-    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Shop</a> 
-    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Events</a> 
-    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Gallery</a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact Us</a>
+  {{!-- Mobile Nav Bar --}}
+  <div class="topnav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">
+        <img src="/images/TasteLogoMobile.png" width="50" height="50" class="d-inline-block align-top" alt="cupcake">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" style="text-align: center">
+          <li class="nav-item">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="menu">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="orderform" target="_blank">Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-</nav>
-
-<!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
-  <span>Company Name</span>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
-
-  <!-- Header -->
-  <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo"><b>Taste and see</b></h1>
-    <!-- <h1 class="w3-xxxlarge w3-text-red"><b>Showcase.</b></h1>
-    <hr style="width:50px;border:5px solid #de6fa1" class="w3-round"> -->
+  {{!-- Main Content --}}
+  <div class="mainContent">
+    {{!-- Gallery --}}
+    <div class="row">
+      <div class="gallery container" id="gallery">
+        <div class="mb-3 pics animation all horizontal">
+          <img class="img-fluid" src="/images/pexels-photo-1857157.jpg" alt="dessert table" width="100%">
+        </div>
+        <div class="mb-3 pics animation all vertical">
+          <img class="img-fluid" src="/images/Image5.png" alt="cake" width="100%">
+        </div>
+        <div class="mb-3 pics animation all vertical">
+          <img class="img-fluid" src="/images/pink.png" alt="cake" width="100%">
+        </div>
+        <div class="mb-3 pics animation all horizontal">
+          <img class="img-fluid" src="/images/ftonpage.jpg" alt="dessert table" width="100%">
+        </div>
+        <div class="mb-3 pics animation all horizontal">
+          <img class="img-fluid" src="/images/colorful-colourful-cupcakes-587739.jpg" alt="dessert table" width="100%">
+        </div>
+        <div class="mb-3 pics animation all vertical">
+          <img class="img-fluid" src="/images/Image10.png" alt="cake" width="100%">
+        </div>
+      </div>
+    </div>
+    {{!-- Menu --}}
+    <div class="row">
+      <div class="container menu-container">
+        <img src="/images/bake-baker-bakery-1251179.jpg" alt="baker" width="100%">
+        <div class="centered">
+          <h2>HOME MADE, BAKED WITH LOVE</h2>
+          <a class="nav-link" href="menu">VIEW OUR MENU</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    {{!-- Order --}}
+    <div class="row">
+      <div class="container order-container">
+        <img src="/images/cakes-chocolate-close-up-959079.jpg" alt="cakes" width="100%">
+        <div class="centered">
+          <h2>ONLINE ORDERING</h2>
+          <a class="nav-link" href="orderform" target="_blank">ORDER NOW</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    {{!-- Bottom Image --}}
+    <div class="row">
+      <div class="container bottom-container">
+        <img src="/images/baking-blueberries-blur-227432.jpg" alt="happy cake" width="100%">
+      </div>
+    </div>
   </div>
-  <!-- End of Navbar -->
-
-  <!-- Start of carousel -->
-  <!-- <div class="slideshow-container">
-
-        <div class="mySlides fade">
-          <div class="numbertext">1 / 3</div>
-          <img src="https://preppykitchen.com/wp-content/uploads/2018/07/Red-Velvet-feature.jpg" style="width:100%">
-          <div class="text">Caption Text</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <img src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2018/02/easter-nest-cake.jpg?itok=-ZAZCCss" style="width:100%">
-          <div class="text">Caption Two</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <img src="https://thestayathomechef.com/wp-content/uploads/2018/02/Red-Velvet-Cake-6-small.jpg" style="width:100%">
-          <div class="text">Caption Three</div>
-        </div>
-        
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        
-        </div>
-        <br>
-        
-        <div style="text-align:center">
-          <span class="dot" onclick="currentSlide(1)"></span> 
-          <span class="dot" onclick="currentSlide(2)"></span> 
-          <span class="dot" onclick="currentSlide(3)"></span> 
-        </div> -->
-        <!-- end of Carousel -->
-
-        <!-- Info -->
-       <div class="container" style="height:419px;background-color:rgb(255, 160, 160);font-size:36px">
-        <h1>Featured treats</h1>
-    <div class="w3-quarter yellow">
-           
-        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Popsicle" style="width:100%">
-        <h3>All I Need Is a Popsicle</h3>
-        
-      </div>
-      <div class="w3-quarter">
-        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Salmon" style="width:100%">
-        <h3>Salmon For Your Skin</h3>
-        
-      </div>
-      <div class="w3-quarter">
-        <img src="http://www.pngmart.com/files/5/Cupcake-PNG-Transparent-Image.png" alt="Sandwich" style="width:100%">
-        <h3>The Perfect Sandwich, A Real Classic</h3>
-        
-      </div>
-      
-      </div>
-              <!-- End of info -->
-
-              <!-- Product offer -->
-              <!-- <div style="height:500px;background-color:rgb(233, 232, 232);font-size:36px">
-                    This div is just here to enable scrolling.
-                    Tip: Try to remove the background-attachment property to remove the scrolling effect.
-                    </div> -->
-
-
-
-  <!-- parallax -->
-  <!-- <p>In this example we have turned off parallax scrolling for mobile devices. It works as expected on all desktop screens sizes.</p>
-<p>Scroll Up and Down this page to see the parallax scrolling effect.</p> -->
-
-<!-- <div class="parallax"></div>
-
-<div style="height:1000px;background-color:red;font-size:36px">
-This div is just here to enable scrolling.
-Tip: Try to remove the background-attachment property to remove the scrolling effect.
-</div> -->
-
-<div class="parallax"></div>
-
-<div id="parallax1" class="parallax-slide"></div>
-        <div style="background-color:rgba(243, 166, 166, 0.664);font-size:36px" id="content1" class="content-slide">
-          <h1>Content</h1>
-        </div>
-
-        <div id="parallax2" class="parallax-slide"></div>
-
-<script>
-// Script to open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
-
-// Carousel
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-</script>
+</div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
-
-</body>
-</html>

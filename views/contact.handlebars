@@ -1,0 +1,88 @@
+<div class="contact">
+    {{!-- Desktop Nav Bar --}}
+    <div class="sidenav">
+        <nav class="nav flex-column">
+            <a class="nav-link" href="/">
+                <img src="/images/TasteLogo.png" width="200" height="100" alt="cupcake"></a>
+            <br>
+            <a class="nav-link" href="orderform" target="_blank">ORDER NOW</a>
+            <br>
+            <a class="nav-link" href="about">About</a>
+            <a class="nav-link" href="menu">Menu</a>
+            <a class="nav-link" href="contact">Contact</a>
+            <br>
+            <br>
+            <a>FOLLOW US</a>
+        </nav>
+    </div>
+    {{!-- Mobile Nav Bar --}}
+    <div class="topnav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">
+                <img src="/images/TasteLogoMobile.png" width="50" height="50" class="d-inline-block align-top"
+                    alt="cupcake">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav" style="text-align: center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orderform" target="_blank">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    {{!-- Main Content --}}
+    <div class="mainContent">
+        <div class="container">
+            {{!-- Contact Form --}}
+            <div class="row">
+                <div class="contact-container col-12">
+                    <img src="/images/asian-food-bakery-baking-908177.jpg" alt="doughnuts" width="100%">
+                    <div class="centered">
+                        <h2>CONTACT US</h2>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div id="contact-form" class="col-10 offset-1">
+                    <form class="clearfix mb-4" action="POST">
+                        <div class="form-group">
+                            <label for="inquiry-name">Name</label>
+                            <input type="text" id="inquiry-name" class="form-control" aria-describedby="inquiry-name"
+                                placeholder="First and Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiry-email">Email</label>
+                            <input type="text" id="inquiry-email" class="form-control" aria-describedby="inquiry-email"
+                                placeholder="Email Adress">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiry-message">Message</label>
+                            <textarea class="form-control" id="inquiry-message" aria-describedby="inquiry-message"
+                                rows="4" placeholder="Type Message Here"></textarea>
+                        </div>
+                        <br>
+                        <button id="sendInquiry" class="btn btn-primary float-left">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

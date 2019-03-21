@@ -15,9 +15,15 @@ var $orderPickTime = $("#order-pick-time");
 var $orderProduct = $("#order-product");
 var $orderQuantity = $("#order-quantity");
 var $orderNote = $("#order-note");
+var $inquiryName = $("#inquiry-name");
+var $inquiryEmail = $("#inquiry-email");
+var $inquiryMessage = $("#inquiry-message");
+var $inquirySendBtn = $("#sendInquiry");
 var $placeOrderBtn = $("#placeOrder");
 var $addProductBtn = $("#addProduct");
+var $inquiryList = $("#inquiry-list");
 var $orderList = $("#order-list");
+var $menuList = $("#menu-list");
 var $completedOrderList = $("#completed-order-list");
 
 
@@ -43,6 +49,16 @@ var API = {
       data: JSON.stringify(order)
     });
   },
+  saveInquiry: function (inquiry) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/inquiries",
+      data: JSON.stringify(inquiry)
+    });
+  },
   getProducts: function () {
     return $.ajax({
       url: "api/products",
@@ -52,6 +68,12 @@ var API = {
   getOrders: function () {
     return $.ajax({
       url: "api/orders",
+      type: "GET"
+    });
+  },
+  getInquiries: function () {
+    return $.ajax({
+      url: "api/inquiries",
       type: "GET"
     });
   },
@@ -102,7 +124,33 @@ var refreshProducts = function () {
         .text("Delete Product");
 
       $li.append($button);
-      $productList.prepend($li);
+      $productList.append($li);
+
+    };
+  });
+};
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshMenuProducts = function () {
+  API.getProducts().then(function (data) {
+    $menuList.empty();
+    for (var i = 0; i < data.length; i++) {
+      var product = data[i];
+      var $name = $("<li>")
+        .text(product.text);
+      var $description = $("<li>")
+        .text(product.description);
+      var $price = $("<p>")
+        .text("$" + product.price + ".00");
+
+      var $ul = $("<ul>")
+        .attr({
+          class: "menu-item",
+          "data-id": product.id,
+          style: "list-style-type: none"
+        })
+        .append($name, $description, $price);
+
+      $menuList.append($ul);
 
     };
   });
@@ -160,6 +208,35 @@ var refreshOrders = function () {
   });
 };
 
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshInquiries = function () {
+  API.getInquiries().then(function (data) {
+    $inquiryList.empty();
+    for (var i = 0; i < data.length; i++) {
+      var inquiry = data[i];
+      var $name = $("<li>")
+        .text("Name: " + inquiry.name);
+      var $email = $("<li>")
+        .text("Email: " + inquiry.email);
+      var $createdAt = $("<li>")
+        .text("Sent: " + inquiry.createdAt);
+      var $message = $("<p>")
+        .text("Message: " + inquiry.message);
+
+      var $ul = $("<ul>")
+        .attr({
+          class: "inquiry-item",
+          "data-id": inquiry.id,
+          style: "list-style-type: none"
+        })
+        .append($name, $email, $createdAt, $message);
+
+      $inquiryList.prepend($ul);
+
+    };
+  });
+};
+
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function (event) {
@@ -179,6 +256,7 @@ var handleFormSubmit = function (event) {
 
   API.saveProduct(product).then(function () {
     refreshProducts();
+    refreshMenuProducts();
   });
 
   $productText.val("");
@@ -229,6 +307,31 @@ var handleOrderFormSubmit = function (event) {
   alert("Your order has been sent to the baker!");
 };
 
+// handleFormSubmit is called whenever we submit a new example
+// Save the new example to the db and refresh the list
+var handleInquiryFormSubmit = function (event) {
+  event.preventDefault();
+
+  var inquiry = {
+    name: $inquiryName.val().trim(),
+    email: $inquiryEmail.val().trim(),
+    message: $inquiryMessage.val().trim()
+  };
+
+  if (!(inquiry.name && inquiry.email && inquiry.message)) {
+    alert("You must enter your name, email, and message!");
+    return;
+  }
+
+  API.saveInquiry(inquiry).then(function () {
+    refreshInquiries();
+  });
+  $inquiryName.val("");
+  $inquiryEmail.val("");
+  $inquiryMessage.val("");
+
+  alert("Your message has been sent!");
+};
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
@@ -239,6 +342,7 @@ var handleDeleteProductBtn = function () {
 
   API.deleteProduct(idToDelete).then(function () {
     refreshProducts();
+    refreshMenuProducts();
   });
 };
 
@@ -266,6 +370,7 @@ var handleCompleteBtnClick = function () {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $placeOrderBtn.on("click", handleOrderFormSubmit);
+$inquirySendBtn.on("click", handleInquiryFormSubmit);
 $orderList.on("click", ".complete", handleCompleteBtnClick);
 $productList.on("click", ".delete", handleDeleteProductBtn);
 $completedOrderList.on("click", ".delete", handleDeleteOrderBtn);

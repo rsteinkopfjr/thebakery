@@ -5,7 +5,34 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     db.Product.findAll({}).then(function (dbProducts) {
       res.render("index", {
-        msg: "Bakery Website",
+        title: "Taste and See Bakery",
+        products: dbProducts
+      });
+    });
+  });
+  // Load menu page
+  app.get("/menu", function (req, res) {
+    db.Product.findAll({}).then(function (dbProducts) {
+      res.render("menu", {
+        title: "Taste and See - Menu",
+        products: dbProducts
+      });
+    });
+  });
+  // Load about page
+  app.get("/about", function (req, res) {
+    db.Product.findAll({}).then(function (dbProducts) {
+      res.render("about", {
+        title: "Taste and See - About",
+        products: dbProducts
+      });
+    });
+  });
+  // Load contact page
+  app.get("/contact", function (req, res) {
+    db.Product.findAll({}).then(function (dbProducts) {
+      res.render("contact", {
+        title: "Taste and See - Contact Us",
         products: dbProducts
       });
     });

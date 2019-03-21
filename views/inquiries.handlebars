@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-8 offset-2">
-                <h1>{{msgInq}}</h1>
+                <h1 style="text-align: center">{{msgInq}}</h1>
                 <br>
                 <ul class="nav nav-tabs justify-content-center">
                     <li class="nav-item">
@@ -21,11 +21,22 @@
                 <br>
                 <h3>Customer Inquiries</h3>
                 <br>
+                <div class="row">
+                    <div id="inquiry-list" class="col-12">
+                        {{#each inquiries}}
+                        <ul class="inquiry-item" data-id="{{this.id}}" style="list-style-type: none">
+                            <li>Name: {{this.name}}</li>
+                            <li>Email: {{this.email}}</li>
+                            <li>Sent: {{this.createdAt}}</li>
+                            <p>Message: {{this.message}}</p>
+                        </ul>
+                        {{/each}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
