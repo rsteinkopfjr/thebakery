@@ -1,32 +1,42 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleCategory = $("#example-category");
-var $exampleDescription = $("#example-description");
-var $examplePrice = $("#example-price");
+var $productText = $("#product-text");
+var $productCategory = $("#product-category");
+var $productDescription = $("#product-description");
+var $productPrice = $("#product-price");
 var $submitBtn = $("#submit");
 var $completeBtn = $("#completed");
-var $exampleList = $("#example-list");
-var $orderName = $("#order-name");
+var $productList = $("#product-list");
+var $orderFirstName = $("#order-first-name");
+var $orderLastName = $("#order-last-name");
 var $orderEmail = $("#order-email");
 var $orderPhone = $("#order-phone");
+var $orderPickDate = $("#order-pick-date");
+var $orderPickTime = $("#order-pick-time");
 var $orderProduct = $("#order-product");
 var $orderQuantity = $("#order-quantity");
+var $orderNote = $("#order-note");
+var $inquiryName = $("#inquiry-name");
+var $inquiryEmail = $("#inquiry-email");
+var $inquiryMessage = $("#inquiry-message");
+var $inquirySendBtn = $("#sendInquiry");
 var $placeOrderBtn = $("#placeOrder");
 var $addProductBtn = $("#addProduct");
+var $inquiryList = $("#inquiry-list");
 var $orderList = $("#order-list");
+var $menuList = $("#menu-list");
 var $completedOrderList = $("#completed-order-list");
 
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function (example) {
+  saveProduct: function (product) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/products",
+      data: JSON.stringify(product)
     });
   },
   saveOrder: function (order) {
@@ -39,9 +49,19 @@ var API = {
       data: JSON.stringify(order)
     });
   },
-  getExamples: function () {
+  saveInquiry: function (inquiry) {
     return $.ajax({
-      url: "api/examples",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/inquiries",
+      data: JSON.stringify(inquiry)
+    });
+  },
+  getProducts: function () {
+    return $.ajax({
+      url: "api/products",
       type: "GET"
     });
   },
@@ -51,15 +71,21 @@ var API = {
       type: "GET"
     });
   },
+  getInquiries: function () {
+    return $.ajax({
+      url: "api/inquiries",
+      type: "GET"
+    });
+  },
   completeOrder: function (id) {
     return $.ajax({
       url: "api/orders/update/" + id,
       type: "PUT"
     });
   },
-  deleteExample: function (id) {
+  deleteProduct: function (id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/products/" + id,
       type: "DELETE"
     });
   },
@@ -72,25 +98,24 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function () {
-  API.getExamples().then(function (data) {
-    $exampleList.empty();
+var refreshProducts = function () {
+  API.getProducts().then(function (data) {
+    $productList.empty();
     for (var i = 0; i < data.length; i++) {
-      var example = data[i];
-      console.log(example);
+      var product = data[i];
       var $name = $("<h5>")
-        .text("Name: " + example.text);
+        .text("Name: " + product.text);
       var $category = $("<h6>")
-        .text("Category: " + example.category);
+        .text("Category: " + product.category);
       var $description = $("<h6>")
-        .text("Description: " + example.description);
+        .text("Description: " + product.description);
       var $price = $("<h6>")
-        .text("Price: " + example.price);
+        .text("Price: " + product.price);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": product.id
         })
         .append($name, $category, $description, $price);
 
@@ -99,11 +124,35 @@ var refreshExamples = function () {
         .text("Delete Product");
 
       $li.append($button);
-      $exampleList.append($li);
-      
-    };
+      $productList.append($li);
 
-    // $exampleList.append($li);
+    };
+  });
+};
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshMenuProducts = function () {
+  API.getProducts().then(function (data) {
+    $menuList.empty();
+    for (var i = 0; i < data.length; i++) {
+      var product = data[i];
+      var $name = $("<li>")
+        .text(product.text);
+      var $description = $("<li>")
+        .text(product.description);
+      var $price = $("<p>")
+        .text("$" + product.price + ".00");
+
+      var $ul = $("<ul>")
+        .attr({
+          class: "menu-item",
+          "data-id": product.id,
+          style: "list-style-type: none"
+        })
+        .append($name, $description, $price);
+
+      $menuList.append($ul);
+
+    };
   });
 };
 
@@ -111,27 +160,32 @@ var refreshOrders = function () {
   API.getOrders().then(function (data) {
     $orderList.empty();
     $completedOrderList.empty();
-    for (var i = 0; i < data.length; i++){
+    for (var i = 0; i < data.length; i++) {
       var order = data[i];
+      var fullname = order.firstname + " " + order.lastname;
       var $name = $("<h5>")
-        .text("Customer Name: " + order.name);
+        .text("Customer Name: " + fullname);
       var $email = $("<h6>")
         .text("Email Address: " + order.email);
       var $phone = $("<h6>")
         .text("Phone Number: " + order.phone);
+      var $pickup = $("<h6>")
+        .text("Requested PickUp: " + order.pickupdate + " @ " + order.pickuptime);
       var $product = $("<h6>")
         .text("Item: " + order.product);
       var $quantity = $("<h6>")
         .text("Quantity: " + order.quantity);
       var $timestamp = $("<h6>")
         .text("Time Created: " + order.timestamp);
+      var $orderNote = $("<h6>")
+        .text("Notes: " + order.note);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
           "data-id": order.id
         })
-        .append($name, $email, $phone, $product, $quantity, $timestamp);
+        .append($name, $email, $phone, $pickup, $product, $quantity, $timestamp, $orderNote);
 
       var $completeBtn = $("<button>")
         .addClass("btn btn-success float-left complete")
@@ -140,18 +194,46 @@ var refreshOrders = function () {
       var $button = $("<button>")
         .addClass("btn btn-danger float-left delete")
         .text("Delete");
-      
-      if (order.completed === false){
+
+      if (order.completed === false) {
         $li.append($completeBtn);
+        $orderList.append($li);
       };
-      if (order.completed === true){
+      if (order.completed === true) {
         $li.append($button);
+        $completedOrderList.append($li);
       }
-      
-      $orderList.append($li);
-      $completedOrderList.append($li);
     };
 
+  });
+};
+
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshInquiries = function () {
+  API.getInquiries().then(function (data) {
+    $inquiryList.empty();
+    for (var i = 0; i < data.length; i++) {
+      var inquiry = data[i];
+      var $name = $("<li>")
+        .text("Name: " + inquiry.name);
+      var $email = $("<li>")
+        .text("Email: " + inquiry.email);
+      var $createdAt = $("<li>")
+        .text("Sent: " + inquiry.createdAt);
+      var $message = $("<p>")
+        .text("Message: " + inquiry.message);
+
+      var $ul = $("<ul>")
+        .attr({
+          class: "inquiry-item",
+          "data-id": inquiry.id,
+          style: "list-style-type: none"
+        })
+        .append($name, $email, $createdAt, $message);
+
+      $inquiryList.prepend($ul);
+
+    };
   });
 };
 
@@ -160,26 +242,27 @@ var refreshOrders = function () {
 var handleFormSubmit = function (event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    category: $exampleCategory.val().trim(),
-    description: $exampleDescription.val().trim(),
-    price: $examplePrice.val().trim()
+  var product = {
+    text: $productText.val().trim(),
+    category: $productCategory.val().trim(),
+    description: $productDescription.val().trim(),
+    price: $productPrice.val().trim()
   };
 
-  if (!(example.text && example.price)) {
+  if (!(product.text && product.price)) {
     alert("You must at least enter a name and price!");
     return;
   }
 
-  API.saveExample(example).then(function () {
-    refreshExamples();
+  API.saveProduct(product).then(function () {
+    refreshProducts();
+    refreshMenuProducts();
   });
 
-  $exampleText.val("");
-  $exampleCategory.val("");
-  $exampleDescription.val("");
-  $examplePrice.val("");
+  $productText.val("");
+  $productCategory.val("");
+  $productDescription.val("");
+  $productPrice.val("");
 };
 
 
@@ -191,50 +274,83 @@ var handleOrderFormSubmit = function (event) {
   var timestamp = date.toLocaleString();
 
   var order = {
-    name: $orderName.val().trim(),
+    firstname: $orderFirstName.val().trim(),
+    lastname: $orderLastName.val().trim(),
     email: $orderEmail.val().trim(),
     phone: $orderPhone.val().trim(),
+    pickupdate: $orderPickDate.val().trim(),
+    pickuptime: $orderPickTime.val().trim(),
     product: $orderProduct.val().trim(),
     quantity: $orderQuantity.val().trim(),
-    timestamp: timestamp
+    timestamp: timestamp,
+    note: $orderNote.val().trim()
   };
 
-  if ((order.product === "undefined") || !(order.name && order.email && order.product && order.quantity)) {
-    alert("You must at least enter your name, email, product and quantity!");
+  if ((order.product === "undefined") || !(order.firstname && order.lastname && order.email && order.product && order.quantity)) {
+    alert("You must at least enter your name, email, item and quantity!");
     return;
   }
 
   API.saveOrder(order).then(function () {
     refreshOrders();
   });
-  $orderName.val("");
+  $orderFirstName.val("");
+  $orderLastName.val("");
   $orderEmail.val("");
   $orderPhone.val("");
+  $orderPickDate.val("");
+  $orderPickTime.val("undefined");
   $orderProduct.val("undefined");
   $orderQuantity.val("");
+  $orderNote.val("");
 
   alert("Your order has been sent to the baker!");
 };
 
-//Figure out in version 2
-// var handleAddProductForm = function (event) {
-//   event.preventDefault();
-//   console.log(this);
-//   var formItem = document.getElementById("product-order-area");
-//   var cln = formItem.cloneNode(true);
-//   document.getElementById("product-order-area-two").append(cln);
-// };
+// handleFormSubmit is called whenever we submit a new example
+// Save the new example to the db and refresh the list
+var handleInquiryFormSubmit = function (event) {
+  event.preventDefault();
+
+  var inquiry = {
+    name: $inquiryName.val().trim(),
+    email: $inquiryEmail.val().trim(),
+    message: $inquiryMessage.val().trim()
+  };
+
+  if (!(inquiry.name && inquiry.email && inquiry.message)) {
+    alert("You must enter your name, email, and message!");
+    return;
+  }
+
+  API.saveInquiry(inquiry).then(function () {
+    refreshInquiries();
+  });
+  $inquiryName.val("");
+  $inquiryEmail.val("");
+  $inquiryMessage.val("");
+
+  alert("Your message has been sent!");
+};
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
+var handleDeleteProductBtn = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function () {
-    refreshExamples();
+  API.deleteProduct(idToDelete).then(function () {
+    refreshProducts();
+    refreshMenuProducts();
   });
+};
+
+var handleDeleteOrderBtn = function () {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+
   API.deleteOrder(idToDelete).then(function () {
     refreshOrders();
   });
@@ -254,8 +370,7 @@ var handleCompleteBtnClick = function () {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $placeOrderBtn.on("click", handleOrderFormSubmit);
+$inquirySendBtn.on("click", handleInquiryFormSubmit);
 $orderList.on("click", ".complete", handleCompleteBtnClick);
-$completedOrderList.on("click", ".complete", handleCompleteBtnClick);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
-$orderList.on("click", ".delete", handleDeleteBtnClick);
-$completedOrderList.on("click", ".delete", handleDeleteBtnClick);
+$productList.on("click", ".delete", handleDeleteProductBtn);
+$completedOrderList.on("click", ".delete", handleDeleteOrderBtn);
