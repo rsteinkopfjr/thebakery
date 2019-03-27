@@ -88,8 +88,8 @@ module.exports = function(app) {
     });
   });
   // Load product page and pass in a product by id
-  app.get("/product/:id", function (req, res) {
-    db.Product.findOne({ where: { id: req.params.id } }).then(function (
+  app.get("/product/:id", function(req, res) {
+    db.Product.findOne({ where: { id: req.params.id } }).then(function(
       dbProducts
     ) {
       res.render("product", {
@@ -98,9 +98,8 @@ module.exports = function(app) {
     });
   });
   // Load order page and pass in an order by id
-  app.get("/order/:id", function (req, res) {
-    db.Order.findOne({ where: { id: req.params.id } }).then(function (
-      dbOrders
+  app.get("/order/:id", function(req, res) {
+    db.Order.findOne({ where: { id: req.params.id } }).then(function (dbOrders
     ) {
       res.render("order", {
         order: dbOrders
@@ -108,8 +107,8 @@ module.exports = function(app) {
     });
   });
   // Load inquiry page and pass in an inquiry by id
-  app.get("/inquiry/:id", function (req, res) {
-    db.Inquiry.findOne({ where: { id: req.params.id } }).then(function (
+  app.get("/inquiry/:id", function(req, res) {
+    db.Inquiry.findOne({ where: { id: req.params.id } }).then(function(
       dbInquiries
     ) {
       res.render("order", {

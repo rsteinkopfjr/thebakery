@@ -4,8 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     email: DataTypes.STRING,
     message: DataTypes.TEXT,
     completed: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   });
   return Inquiry;
