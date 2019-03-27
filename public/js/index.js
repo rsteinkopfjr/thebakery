@@ -1,11 +1,12 @@
-// Get references to page elements
+// References to page elements
+// Products dashboard page elements
 var $productText = $("#product-text");
 var $productCategory = $("#product-category");
 var $productDescription = $("#product-description");
 var $productPrice = $("#product-price");
-var $submitBtn = $("#submit");
-var $completeBtn = $("#completed");
 var $productList = $("#product-list");
+var $submitBtn = $("#submit");
+// Order form page elements
 var $orderFirstName = $("#order-first-name");
 var $orderLastName = $("#order-last-name");
 var $orderEmail = $("#order-email");
@@ -15,20 +16,27 @@ var $orderPickTime = $("#order-pick-time");
 var $orderProduct = $("#order-product");
 var $orderQuantity = $("#order-quantity");
 var $orderNote = $("#order-note");
+var $placeOrderBtn = $("#placeOrder");
+// Orders dashboard page elements
+var $orderList = $("#order-list");
+var $completedOrderList = $("#completed-order-list");
+var $completeBtn = $("#completed");
+// Contact us page elements
 var $inquiryName = $("#inquiry-name");
 var $inquiryEmail = $("#inquiry-email");
 var $inquiryMessage = $("#inquiry-message");
 var $inquirySendBtn = $("#sendInquiry");
-var $placeOrderBtn = $("#placeOrder");
-var $addProductBtn = $("#addProduct");
+// Inquiry dashboard page elements
 var $inquiryList = $("#inquiry-list");
-var $orderList = $("#order-list");
+var $completedInquiryList = $("#completed-inquiry-list");
+var $completeInquiryBtn = $("#completedInquiry");
+// Menu page elements
 var $menuList = $("#menu-list");
-var $completedOrderList = $("#completed-order-list");
 
 
 // The API object contains methods for each kind of request we'll make
 var API = {
+  // Add a product to the database
   saveProduct: function (product) {
     return $.ajax({
       headers: {
@@ -39,6 +47,7 @@ var API = {
       data: JSON.stringify(product)
     });
   },
+  // Add an order to the database
   saveOrder: function (order) {
     return $.ajax({
       headers: {
@@ -49,6 +58,7 @@ var API = {
       data: JSON.stringify(order)
     });
   },
+  // Add an inquiry to the database
   saveInquiry: function (inquiry) {
     return $.ajax({
       headers: {
@@ -59,45 +69,65 @@ var API = {
       data: JSON.stringify(inquiry)
     });
   },
+  // Get products from the database
   getProducts: function () {
     return $.ajax({
       url: "api/products",
       type: "GET"
     });
   },
+  // Get orders from the database
   getOrders: function () {
     return $.ajax({
       url: "api/orders",
       type: "GET"
     });
   },
+  // Get inquiries from the database
   getInquiries: function () {
     return $.ajax({
       url: "api/inquiries",
       type: "GET"
     });
   },
+  // Updated orders in the database
   completeOrder: function (id) {
     return $.ajax({
       url: "api/orders/update/" + id,
       type: "PUT"
     });
   },
+  // Updated inquiries in the database
+  completeInquiry: function (id) {
+    return $.ajax({
+      url: "api/inquiries/update/" + id,
+      type: "PUT"
+    });
+  },
+  // Remove a product from the database
   deleteProduct: function (id) {
     return $.ajax({
       url: "api/products/" + id,
       type: "DELETE"
     });
   },
+  // Remove an order from the database
   deleteOrder: function (id) {
     return $.ajax({
       url: "api/orders/" + id,
       type: "DELETE"
     });
+  },
+  // Remove an inquiry from the database
+  deleteInquiry: function (id) {
+    return $.ajax({
+      url: "api/inquiries/" + id,
+      type: "DELETE"
+    });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
+// Gets products from the db and repopulates the product dashboard list
 var refreshProducts = function () {
   API.getProducts().then(function (data) {
     $productList.empty();
@@ -129,7 +159,8 @@ var refreshProducts = function () {
     };
   });
 };
-// refreshExamples gets new examples from the db and repopulates the list
+
+// Gets products from the db and repopulates the menu list
 var refreshMenuProducts = function () {
   API.getProducts().then(function (data) {
     $menuList.empty();
@@ -156,6 +187,7 @@ var refreshMenuProducts = function () {
   });
 };
 
+// Gets orders from the db and repopulates the order dashboard list
 var refreshOrders = function () {
   API.getOrders().then(function (data) {
     $orderList.empty();
@@ -202,16 +234,17 @@ var refreshOrders = function () {
       if (order.completed === true) {
         $li.append($button);
         $completedOrderList.append($li);
-      }
+      };
     };
 
   });
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
+// Gets inquiries from the db and repopulates the inquiry dashboard list
 var refreshInquiries = function () {
   API.getInquiries().then(function (data) {
     $inquiryList.empty();
+    $completedInquiryList.empty();
     for (var i = 0; i < data.length; i++) {
       var inquiry = data[i];
       var $name = $("<li>")
@@ -225,20 +258,33 @@ var refreshInquiries = function () {
 
       var $ul = $("<ul>")
         .attr({
-          class: "inquiry-item",
+          class: "inquiry-item list-group-item",
           "data-id": inquiry.id,
           style: "list-style-type: none"
         })
         .append($name, $email, $createdAt, $message);
 
-      $inquiryList.prepend($ul);
-
+      var $completeBtn = $("<button>")
+        .addClass("btn btn-success float-left completeInquiry")
+        .text("Completed");
+  
+      var $button = $("<button>")
+        .addClass("btn btn-danger float-left deleteInquiry")
+        .text("Delete");
+  
+      if (inquiry.completed === false) {
+        $ul.append($completeBtn);
+        $inquiryList.append($ul);
+      };
+      if (inquiry.completed === true) {
+        $ul.append($button);
+        $completedInquiryList.append($ul);
+      };
     };
   });
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// Saves the new product to the db and refreshes the product dashboard and menu lists
 var handleFormSubmit = function (event) {
   event.preventDefault();
 
@@ -263,11 +309,11 @@ var handleFormSubmit = function (event) {
   $productCategory.val("");
   $productDescription.val("");
   $productPrice.val("");
+
+  alert("The product has been added to the list!");
 };
 
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// Saves the new order to the db and refreshes the order dashboard list
 var handleOrderFormSubmit = function (event) {
   event.preventDefault();
   var date = new Date();
@@ -287,7 +333,7 @@ var handleOrderFormSubmit = function (event) {
   };
 
   if ((order.product === "undefined") || !(order.firstname && order.lastname && order.email && order.product && order.quantity)) {
-    alert("You must at least enter your name, email, item and quantity!");
+    alert("You must at least enter your full name, email, item and quantity!");
     return;
   }
 
@@ -307,8 +353,7 @@ var handleOrderFormSubmit = function (event) {
   alert("Your order has been sent to the baker!");
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// Saves the new inquiry to the db and refreshes the inquiry dashboard list
 var handleInquiryFormSubmit = function (event) {
   event.preventDefault();
 
@@ -333,8 +378,29 @@ var handleInquiryFormSubmit = function (event) {
   alert("Your message has been sent!");
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
+// Updates the order in the db and refreshes the order dashboard list
+var handleCompleteOrderBtn = function () {
+  var idToUpdate = $(this)
+    .parent()
+    .attr("data-id");
+
+  API.completeOrder(idToUpdate).then(function () {
+    refreshOrders();
+  });
+};
+
+// Updates the inquiry in the db and refreshes the inquiry dashboard list
+var handleCompleteInquiryBtn = function () {
+  var idToUpdateInquiry = $(this)
+    .parent()
+    .attr("data-id");
+
+  API.completeInquiry(idToUpdateInquiry).then(function () {
+    refreshInquiries();
+  });
+};
+
+// Removes the product from the db and refreshes the product dashboard and menu list
 var handleDeleteProductBtn = function () {
   var idToDelete = $(this)
     .parent()
@@ -346,6 +412,7 @@ var handleDeleteProductBtn = function () {
   });
 };
 
+// Removes the order from the db and refreshes the order dashboard list
 var handleDeleteOrderBtn = function () {
   var idToDelete = $(this)
     .parent()
@@ -356,21 +423,23 @@ var handleDeleteOrderBtn = function () {
   });
 };
 
-
-var handleCompleteBtnClick = function () {
-  var idToUpdate = $(this)
+// Removes the inquiry from the db and refreshes the inquiry dashboard list
+var handleDeleteInquiryBtn = function () {
+  var idToDeleteInquiry = $(this)
     .parent()
     .attr("data-id");
 
-  API.completeOrder(idToUpdate).then(function () {
-    refreshOrders();
+  API.deleteInquiry(idToDeleteInquiry).then(function () {
+    refreshInquiries();
   });
 };
 
-// Add event listeners to the submit and delete buttons
+// Add event listeners to the submit, complete and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $placeOrderBtn.on("click", handleOrderFormSubmit);
 $inquirySendBtn.on("click", handleInquiryFormSubmit);
-$orderList.on("click", ".complete", handleCompleteBtnClick);
+$orderList.on("click", ".complete", handleCompleteOrderBtn);
+$inquiryList.on("click", ".completeInquiry", handleCompleteInquiryBtn);
 $productList.on("click", ".delete", handleDeleteProductBtn);
 $completedOrderList.on("click", ".delete", handleDeleteOrderBtn);
+$completedInquiryList.on("click", ".deleteInquiry", handleDeleteInquiryBtn);

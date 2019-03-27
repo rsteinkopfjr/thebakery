@@ -87,10 +87,9 @@ module.exports = function(app) {
       });
     });
   });
-
-  // Load example page and pass in an example by id
-  app.get("/product/:id", function(req, res) {
-    db.Product.findOne({ where: { id: req.params.id } }).then(function(
+  // Load product page and pass in a product by id
+  app.get("/product/:id", function (req, res) {
+    db.Product.findOne({ where: { id: req.params.id } }).then(function (
       dbProducts
     ) {
       res.render("product", {
@@ -98,16 +97,26 @@ module.exports = function(app) {
       });
     });
   });
-
-  // Load order page and pass in an example by id
-  app.get("/order/:id", function(req, res) {
-    db.Order.findOne({ where: { id: req.params.id } }).then(function(dbOrders) {
+  // Load order page and pass in an order by id
+  app.get("/order/:id", function (req, res) {
+    db.Order.findOne({ where: { id: req.params.id } }).then(function (
+      dbOrders
+    ) {
       res.render("order", {
         order: dbOrders
       });
     });
   });
-
+  // Load inquiry page and pass in an inquiry by id
+  app.get("/inquiry/:id", function (req, res) {
+    db.Inquiry.findOne({ where: { id: req.params.id } }).then(function (
+      dbInquiries
+    ) {
+      res.render("order", {
+        order: dbInquiries
+      });
+    });
+  });
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
