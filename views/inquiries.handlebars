@@ -20,17 +20,38 @@
                 </ul>
                 <br>
                 <h3>Customer Inquiries</h3>
-                <br>
                 <div class="row">
-                    <div id="inquiry-list" class="col-12">
+                    <div class="col-6">
+                        <h4>New Inquiries:</h4>
+                        <div id="inquiry-list" class="list-group">
                         {{#each inquiries}}
-                        <ul class="inquiry-item" data-id="{{this.id}}" style="list-style-type: none">
+                        {{#unless this.completed}}
+                        <ul class="inquiry-item list-group-item" data-id="{{this.id}}" style="list-style-type: none">
                             <li>Name: {{this.name}}</li>
                             <li>Email: {{this.email}}</li>
                             <li>Sent: {{this.createdAt}}</li>
                             <p>Message: {{this.message}}</p>
+                            <button class="btn btn-success float-left completeInquiry">Completed</button>
                         </ul>
+                        {{/unless}}
                         {{/each}}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h4>Completed Inquiries:</h4>
+                        <div id="completed-inquiry-list" class="list-group">
+                        {{#each inquiries}}
+                        {{#if this.completed}}
+                        <ul class="inquiry-item list-group-item" data-id="{{this.id}}" style="list-style-type: none">
+                            <li>Name: {{this.name}}</li>
+                            <li>Email: {{this.email}}</li>
+                            <li>Sent: {{this.createdAt}}</li>
+                            <p>Message: {{this.message}}</p>
+                            <button class="btn btn-danger float-left deleteInquiry">Delete</button>
+                        </ul>
+                        {{/if}}
+                        {{/each}}
+                        </div>
                     </div>
                 </div>
             </div>
