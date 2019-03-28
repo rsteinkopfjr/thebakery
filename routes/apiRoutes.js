@@ -40,22 +40,22 @@ module.exports = function(app) {
   // Updates an order to completed
   app.put("/api/orders/update/:id", function(req, res) {
     db.Order.update(
+      {
+        completed: true
+      },
+      { where: { id: req.params.id } }
+    ).then(function(dbOrders)
     {
-      completed: true
-    },
-    { where: { id: req.params.id } }
-    ).then(function(dbOrders
-    ) {
       res.json(dbOrders);
     });
   });
   // Updates an inquiry to completed
   app.put("/api/inquiries/update/:id", function(req, res) {
     db.Inquiry.update(
-    { 
-      completed: true 
-    },
-    { where: { id: req.params.id } }
+      {
+        completed: true
+      },
+      { where: { id: req.params.id } }
     ).then(function(dbInquiries) {
       res.json(dbInquiries);
     });
@@ -70,8 +70,7 @@ module.exports = function(app) {
   });
   // Deletes an order by id
   app.delete("/api/orders/:id", function(req, res) {
-    db.Order.destroy({ where: { id: req.params.id } }).then(function(
-      dbOrders
+    db.Order.destroy({ where: { id: req.params.id } }).then(function(dbOrders
     ) {
       res.json(dbOrders);
     });
