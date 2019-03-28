@@ -99,8 +99,9 @@ module.exports = function(app) {
   });
   // Load order page and pass in an order by id
   app.get("/order/:id", function(req, res) {
-    db.Order.findOne({ where: { id: req.params.id } }).then(function(dbOrders
-    ) {
+    db.Order.findOne({ where: { id: req.params.id } }).then(function(
+      dbOrders
+      ) {
       res.render("order", {
         order: dbOrders
       });
