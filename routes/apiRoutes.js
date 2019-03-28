@@ -39,10 +39,11 @@ module.exports = function(app) {
   });
   // Updates an order to completed
   app.put("/api/orders/update/:id", function(req, res) {
-    db.Order.update({
-      completed: true 
+    db.Order.update(
+    {
+      completed: true
     },
-    { where: { id: req.params.id} }
+    { where: { id: req.params.id } }
     ).then(function(dbOrders
     ) {
       res.json(dbOrders);
@@ -50,7 +51,8 @@ module.exports = function(app) {
   });
   // Updates an inquiry to completed
   app.put("/api/inquiries/update/:id", function(req, res) {
-    db.Inquiry.update({ 
+    db.Inquiry.update(
+    { 
       completed: true 
     },
     { where: { id: req.params.id } }
@@ -68,7 +70,8 @@ module.exports = function(app) {
   });
   // Deletes an order by id
   app.delete("/api/orders/:id", function(req, res) {
-    db.Order.destroy({ where: { id: req.params.id } }).then(function(dbOrders
+    db.Order.destroy({ where: { id: req.params.id } }).then(function(
+      dbOrders
     ) {
       res.json(dbOrders);
     });
