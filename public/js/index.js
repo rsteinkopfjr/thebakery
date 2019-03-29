@@ -374,3 +374,7 @@ $inquirySendBtn.on("click", handleInquiryFormSubmit);
 $orderList.on("click", ".complete", handleCompleteBtnClick);
 $productList.on("click", ".delete", handleDeleteProductBtn);
 $completedOrderList.on("click", ".delete", handleDeleteOrderBtn);
+
+
+// prrallax
+$('.parallax-window').parallax({imageSrc: '/images/Sylvana's.jpg'});
